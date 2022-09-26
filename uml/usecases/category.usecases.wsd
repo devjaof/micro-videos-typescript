@@ -1,0 +1,9 @@
+@startuml AdminUseCases
+
+:Admin: -> (Create categories)
+:Admin: -> (Update categories)
+:Admin: -> (Delete categories)
+:Admin: -> (Consult categories)
+:Admin: -> (Consult category)
+
+@enduml
