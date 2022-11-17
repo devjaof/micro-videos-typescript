@@ -1,7 +1,7 @@
 import { Category } from './category';
 
 describe("Category Unit Tests", ():void => {
-  test("category with only the non mandatory prop", () => {
+  test("category with only non mandatory props", () => {
     const now = new Date();
     const category = new Category({
       title: 'category title'
@@ -15,7 +15,7 @@ describe("Category Unit Tests", ():void => {
     });
   })
 
-  test("category with only the non mandatory prop and the description", () => {
+  test("category with only non mandatory props and the description", () => {
     const now = new Date();
     const category = new Category({
       title: 'another category title',
@@ -30,7 +30,7 @@ describe("Category Unit Tests", ():void => {
     });
   })
 
-  test("category with the non mandatory prop and omitting the date", () => {
+  test("category with non mandatory props and omitting the date", () => {
     const now = new Date();
 
     const category = new Category({
@@ -47,7 +47,7 @@ describe("Category Unit Tests", ():void => {
     });
   })
 
-  test("is getting the title", () => {
+  test("is getting the title?", () => {
     const now = new Date();
 
     const category = new Category({
@@ -59,7 +59,7 @@ describe("Category Unit Tests", ():void => {
     expect(category.title).toBe('another category title');
   })
 
-  test("is getting the description", () => {
+  test("is getting the description?", () => {
     const now = new Date();
 
     const category = new Category({
@@ -72,7 +72,7 @@ describe("Category Unit Tests", ():void => {
     expect(category.description).toBe('another category description');
   })
 
-  test("is getting the active property", () => {
+  test("is getting active property?", () => {
     const now = new Date();
 
     const category = new Category({
@@ -85,7 +85,7 @@ describe("Category Unit Tests", ():void => {
     expect(category.active).toBeFalsy();
   })
 
-  test("is getting the createdAt property", () => {
+  test("is getting createdAt property?", () => {
     const now = new Date();
 
     const category = new Category({
@@ -98,7 +98,7 @@ describe("Category Unit Tests", ():void => {
     expect(category.createdAt).toBe(now);
   })
 
-  test("is setting the description property", () => {
+  test("is setting description property?", () => {
     const now = new Date();
 
     let category = new Category({
@@ -112,7 +112,7 @@ describe("Category Unit Tests", ():void => {
     expect(category.description).toBe(null);
   })
   
-  test("is setting the active property", () => {
+  test("is setting the active property?", () => {
     const now = new Date();
 
     let category = new Category({
