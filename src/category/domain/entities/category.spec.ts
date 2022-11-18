@@ -1,7 +1,7 @@
 import { Category } from './category';
 import { validate as uuidValidate } from 'uuid';
 
-describe("Category Unit Tests", ():void => {
+describe("Category Tests", () => {
   test("category with only non mandatory props", () => {
     const now = new Date();
     const category = new Category({title: 'category title'});
@@ -47,29 +47,22 @@ describe("Category Unit Tests", ():void => {
   })
 
   test("id field validations", () => {
-    let category = new Category({title: 'Movie'});
-    expect(category.id).not.toBeNull();
-    expect(uuidValidate(category.id)).toBeTruthy();
+    const data = [
+      {props: {title: "Movie"} },
+      {props: {title: "Movie"}, id: null},
+      {props: {title: "Movie"}, id: undefined},
+      {props: {title: "Movie"}, id: 'ad74d400-fa97-41c8-884b-45adcf065703' },
+    ];
 
-    category = new Category({title: 'Movie'}, null);
-    expect(category.id).not.toBeNull();
-    expect(uuidValidate(category.id)).toBeTruthy();
-
-    category = new Category({title: 'Movie'}, undefined);
-    expect(category.id).not.toBeNull();
-    expect(uuidValidate(category.id)).toBeTruthy();
-
-    category = new Category({title: 'Movie'}, 'ad74d400-fa97-41c8-884b-45adcf065703');
-    expect(category.id).not.toBeNull();
-    expect(uuidValidate(category.id)).toBeTruthy();
-
-    category = new Category({title: 'Movie'}, '1');
-    expect(category.id).not.toBeNull();
-    expect(uuidValidate(category.id)).toBeFalsy();
+    data.forEach((item) => {
+      let category = new Category(item.props, item.id);
+      expect(category.id).not.toBeNull();
+      expect(uuidValidate(category.id)).toBeTruthy();
+    })
   })
 });
 
-describe("Getters and Setters", ():void => {
+describe("Getters and Setters", () => {
   test("is getting the title?", () => {
     const now = new Date();
 
