@@ -4,9 +4,7 @@ import { validate as uuidValidate } from 'uuid';
 describe("Category Unit Tests", ():void => {
   test("category with only non mandatory props", () => {
     const now = new Date();
-    const category = new Category({
-      title: 'category title'
-    });
+    const category = new Category({title: 'category title'});
 
     expect(category.props).toStrictEqual({
       title: 'category title',
@@ -48,7 +46,7 @@ describe("Category Unit Tests", ():void => {
     });
   })
 
-  test("id field cannot be null", () => {
+  test("id field validations", () => {
     let category = new Category({title: 'Movie'});
     expect(category.id).not.toBeNull();
     expect(uuidValidate(category.id)).toBeTruthy();
@@ -60,6 +58,14 @@ describe("Category Unit Tests", ():void => {
     category = new Category({title: 'Movie'}, undefined);
     expect(category.id).not.toBeNull();
     expect(uuidValidate(category.id)).toBeTruthy();
+
+    category = new Category({title: 'Movie'}, 'ad74d400-fa97-41c8-884b-45adcf065703');
+    expect(category.id).not.toBeNull();
+    expect(uuidValidate(category.id)).toBeTruthy();
+
+    category = new Category({title: 'Movie'}, '1');
+    expect(category.id).not.toBeNull();
+    expect(uuidValidate(category.id)).toBeFalsy();
   })
 });
 
