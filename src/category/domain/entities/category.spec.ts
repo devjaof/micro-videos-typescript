@@ -1,4 +1,4 @@
-import { Category } from './category';
+import { Category, CategoryProperties } from './category';
 import { validate as uuidValidate } from 'uuid';
 
 describe("Category Tests", () => {
@@ -47,7 +47,9 @@ describe("Category Tests", () => {
   })
 
   test("id field validations", () => {
-    const data = [
+    type CategoryData = {props: CategoryProperties, id?: string}
+
+    const data: CategoryData[] = [
       {props: {title: "Movie"} },
       {props: {title: "Movie"}, id: null},
       {props: {title: "Movie"}, id: undefined},
