@@ -8,6 +8,7 @@ export type CategoryProperties = {
 }
 
 export class Category {
+
   public readonly id: string;
   constructor (public readonly props: CategoryProperties, id?: string){
     this.id = id || uuid();
@@ -42,3 +43,7 @@ export class Category {
     this.props.active = value ?? true;
   }
 }
+
+// TODO: anotar explicação sobre objeto de valor
+
+
