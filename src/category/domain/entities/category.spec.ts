@@ -1,4 +1,5 @@
 import { Category } from './category';
+import { validate as uuidValidate } from 'uuid';
 
 describe("Category Unit Tests", ():void => {
   test("category with only non mandatory props", () => {
@@ -47,6 +48,22 @@ describe("Category Unit Tests", ():void => {
     });
   })
 
+  test("id field cannot be null", () => {
+    let category = new Category({title: 'Movie'});
+    expect(category.id).not.toBeNull();
+    expect(uuidValidate(category.id)).toBeTruthy();
+
+    category = new Category({title: 'Movie'}, null);
+    expect(category.id).not.toBeNull();
+    expect(uuidValidate(category.id)).toBeTruthy();
+
+    category = new Category({title: 'Movie'}, undefined);
+    expect(category.id).not.toBeNull();
+    expect(uuidValidate(category.id)).toBeTruthy();
+  })
+});
+
+describe("Getters and Setters", ():void => {
   test("is getting the title?", () => {
     const now = new Date();
 
@@ -125,4 +142,4 @@ describe("Category Unit Tests", ():void => {
     category["active"] = true;
     expect(category.active).toBeTruthy();
   })
-});
+})
