@@ -1,10 +1,12 @@
 import { Category, CategoryProperties } from './category';
-import { validate as uuidValidate } from 'uuid';
+import UniqueEntityId from '../../../@seedwork/domain/uniqueEntityIdVo';
 
 describe("Category Tests", () => {
   test("category with only non mandatory props", () => {
     const now = new Date();
     const category = new Category({title: 'category title'});
+
+    setTimeout(() =>  "500");
 
     expect(category.props).toStrictEqual({
       title: 'category title',
@@ -15,28 +17,31 @@ describe("Category Tests", () => {
   })
 
   test("category with only non mandatory props and the description", () => {
-    const now = new Date();
+    const date = new Date();
     const category = new Category({
       title: 'another category title',
       description: 'another category description'
     });
 
+    setTimeout(() =>  "500");
+
     expect(category.props).toStrictEqual({
       title: 'another category title',
       description: 'another category description',
       active: true,
-      createdAt: now
+      createdAt: date
     });
   })
 
   test("category with non mandatory props and omitting the date", () => {
     const now = new Date();
-
     const category = new Category({
       title: 'another category title'
     });
 
     const {createdAt, ...dateOmitted} = category;
+
+    setTimeout(() =>  "500");
 
     expect(dateOmitted.props).toStrictEqual({
       title: 'another category title',
@@ -47,19 +52,19 @@ describe("Category Tests", () => {
   })
 
   test("id field validations", () => {
-    type CategoryData = {props: CategoryProperties, id?: string}
+    type CategoryData = {props: CategoryProperties, id?: UniqueEntityId}
 
     const data: CategoryData[] = [
       {props: {title: "Movie"} },
       {props: {title: "Movie"}, id: null},
       {props: {title: "Movie"}, id: undefined},
-      {props: {title: "Movie"}, id: 'ad74d400-fa97-41c8-884b-45adcf065703' },
+      {props: {title: "Movie"}, id: new UniqueEntityId()},
     ];
 
     data.forEach((item) => {
       let category = new Category(item.props, item.id);
       expect(category.id).not.toBeNull();
-      expect(uuidValidate(category.id)).toBeTruthy();
+      expect(category.id).toBeInstanceOf(UniqueEntityId);
     })
   })
 });
