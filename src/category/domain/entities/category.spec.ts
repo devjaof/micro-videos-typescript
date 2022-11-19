@@ -2,19 +2,10 @@ import { Category, CategoryProperties } from './category';
 import UniqueEntityId from '../../../@seedwork/domain/uniqueEntityIdVo';
 
 describe("Category Tests", () => {
-  test("category with only non mandatory props", () => {
-    const now = new Date();
-    const category = new Category({title: 'category title'});
-
-    setTimeout(() =>  "500");
-
-    expect(category.props).toStrictEqual({
-      title: 'category title',
-      description: null,
-      active: true,
-      createdAt: now
-    });
-  })
+  beforeAll(() => {
+    jest.useFakeTimers()
+    .setSystemTime(new Date('19 Nov 2022 05:00:00 GMT').getTime());
+  });
 
   test("category with only non mandatory props and the description", () => {
     const date = new Date();
@@ -22,8 +13,6 @@ describe("Category Tests", () => {
       title: 'another category title',
       description: 'another category description'
     });
-
-    setTimeout(() =>  "500");
 
     expect(category.props).toStrictEqual({
       title: 'another category title',
@@ -40,8 +29,6 @@ describe("Category Tests", () => {
     });
 
     const {createdAt, ...dateOmitted} = category;
-
-    setTimeout(() =>  "500");
 
     expect(dateOmitted.props).toStrictEqual({
       title: 'another category title',

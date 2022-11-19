@@ -1,3 +1,4 @@
+// VO -> Value Object
 import InvalidUuidError from '../../@seedwork/errors/invalidUuid.error';
 import { v4 as uuid, validate as uuidValidate } from 'uuid';
 
