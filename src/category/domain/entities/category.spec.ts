@@ -43,15 +43,14 @@ describe("Category Tests", () => {
 
     const data: CategoryData[] = [
       {props: {title: "Movie"} },
-      {props: {title: "Movie"}, id: null},
-      {props: {title: "Movie"}, id: undefined},
       {props: {title: "Movie"}, id: new UniqueEntityId()},
     ];
 
     data.forEach((item) => {
       const category = new Category(item.props, item.id);
-      expect(category.id).not.toBeNull();
-      expect(category.id).toBeInstanceOf(UniqueEntityId);
+
+      expect(category.UniqueEntityId).not.toBeNull();
+      expect(category.UniqueEntityId).toBeInstanceOf(UniqueEntityId);
     })
   })
 });
