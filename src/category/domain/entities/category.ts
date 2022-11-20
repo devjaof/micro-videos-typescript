@@ -1,3 +1,4 @@
+import Entity from '../../../@seedwork/entity/entity';
 import UniqueEntityId from '../../../@seedwork/domain/valueObjects/uniqueEntityIdVo';
 
 export type CategoryProperties = {
@@ -7,11 +8,9 @@ export type CategoryProperties = {
  createdAt?: Date;
 }
 
-export class Category {
-  public readonly id: UniqueEntityId;
-
+export class Category extends Entity<CategoryProperties> {
   constructor (public readonly props: CategoryProperties, id?: UniqueEntityId){
-    this.id = id || new UniqueEntityId();
+    super(props, id);
     this.props.description = this.props.description ?? null;
     this.props.active = this.props.active ?? true;
     this.props.createdAt = this.props.createdAt ?? new Date();
@@ -43,7 +42,4 @@ export class Category {
     this.props.active = value ?? true;
   }
 }
-
-// TODO: anotar explicação sobre objeto de valor
-
 
