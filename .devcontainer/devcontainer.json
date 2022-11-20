@@ -21,7 +21,13 @@
 
 	"settings": {
 		"terminal.integrated.defaultProfile.linux": "bash"
-	}
+	},
+
+	"extensions": [
+		"dbaeumer.vscode-eslint",
+		"eamodio.gitlens",
+		"vivaxy.vscode-conventional-commits"
+	]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
