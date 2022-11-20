@@ -17,8 +17,6 @@ describe('Value Object Unit Tests', () => {
   it('should convert value to string', () => {
     const date = new Date();
     let arrange: any = [
-      {received: null, expected: "null"}, 
-      {received: undefined, expected: "undefined"},
       {received: "", expected: ""}, 
       {received: "batata", expected: "batata"}, 
       {received: 3, expected: "3"}, 
@@ -36,5 +34,38 @@ describe('Value Object Unit Tests', () => {
 
       expect(`${vo}`).toBe(value.expected);
     })
+  })
+
+  it('should be immutable', () => {
+    const obj = {
+      prop: 'derby solto',
+      nested: {prop2: 'camelinho', prop3: new Date()}
+    }
+
+    const vo = new StubValueObject(obj);
+
+    expect(() => {
+      (vo as any).value.prop = 'bar do pimbas';
+    }).toThrow(
+      "Cannot assign to read only property 'prop' of object '#<Object>'"
+    )
+
+    expect(() => {
+      (vo as any).value.nested.prop2 = 'bar do pimbas';
+    }).toThrow(
+      "Cannot assign to read only property 'prop2' of object '#<Object>'"
+    )
+
+    expect(() => {
+      (vo as any).value.nested.prop3 = 'bar do pimbas';
+    }).toThrow(
+      "Cannot assign to read only property 'prop3' of object '#<Object>'"
+    )
+
+    expect(() => {
+      (vo as any).value.nested.prop4 = 'bar do pimbas';
+    }).toThrow(
+      "Cannot add property prop4, object is not extensible"
+    )
   })
 })
