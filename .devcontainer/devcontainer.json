@@ -26,7 +26,9 @@
 	"extensions": [
 		"dbaeumer.vscode-eslint",
 		"eamodio.gitlens",
-		"vivaxy.vscode-conventional-commits"
+		"vivaxy.vscode-conventional-commits",
+		"donjayamanne.githistory",
+		"donjayamanne.git-extension-pack"
 	]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

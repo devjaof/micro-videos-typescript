@@ -1,5 +1,5 @@
 import { validate } from "uuid";
-import InvalidUuidError from "../../@seedwork/errors/invalidUuid.error";
+import InvalidUuidError from "../../../@seedwork/errors/invalidUuid.error";
 import UniqueEntityId from "./uniqueEntityIdVo";
 
 function spyValidateMethod() {
@@ -26,7 +26,7 @@ describe("UniqueEntityId unity tests", () => {
 
     // vo -> value object
     const vo = new UniqueEntityId('258d4d87-c57d-4ec5-81d9-6fbb9fc73929');
-    expect(vo.id).toBe('258d4d87-c57d-4ec5-81d9-6fbb9fc73929');
+    expect(vo.value).toBe('258d4d87-c57d-4ec5-81d9-6fbb9fc73929');
 
     expect(spyOnValidate).toHaveBeenCalled();
   })
@@ -36,7 +36,7 @@ describe("UniqueEntityId unity tests", () => {
 
     // vo -> value object
     const vo = new UniqueEntityId();
-    expect(validate(vo.id)).toBeTruthy();
+    expect(validate(vo.value)).toBeTruthy();
 
     expect(spyOnValidate).toHaveBeenCalled();
   })
