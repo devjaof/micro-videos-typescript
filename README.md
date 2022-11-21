@@ -1,10 +1,10 @@
 ### A fazer
-- Montagem do ambiente dev (Docker e IDE): ok
-- Aplicação Node.js com TypeScript: ok
+- Criação do container de desenvolvimento em cloud - OK
+- Aplicação Node com Typescript - OK
 - Entidade Categoria e seus testes: fazendo
 - UseCases, Repository e seus testes
 
-- Repetir para outras entidades (Genre, CastMember, Video)
+- Repetir para outras entidades (Genre, CastMember etc)
 
 ### Ferramentas
 - Nest.js - API Rest
