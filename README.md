@@ -7,6 +7,9 @@
 - Repetir para outras entidades (Genre, CastMember etc)
 
 ### Ferramentas
-- Nest.js - API Rest
+- CleanArc
+- Typescript
+- Jest
+- Nest.js
 - RabbitMQ e encoder de vídeo
 - Testes E2E
