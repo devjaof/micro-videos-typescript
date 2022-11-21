@@ -49,89 +49,44 @@ describe("Category Tests", () => {
     data.forEach((item) => {
       const category = new Category(item.props, item.id);
 
-      expect(category.UniqueEntityId).not.toBeNull();
+      expect(category.id).not.toBeNull();
       expect(category.UniqueEntityId).toBeInstanceOf(UniqueEntityId);
     })
   })
 });
 
 describe("Getters and Setters", () => {
-  test("is getting the title?", () => {
-    const now = new Date();
+  it("should get and set title", () => {
+    const category = new Category({title: 'Documentário'});
+    expect(category.title).toBe('Documentário');
 
-    const category = new Category({
-      title: 'another category title',
-      active: false,
-      createdAt: now,
-    });
-
-    expect(category.title).toBe('another category title');
+    category["title"] = 'Filmes';
+    expect(category.title).toBe('Filmes');
   })
 
-  test("is getting the description?", () => {
-    const now = new Date();
-
-    const category = new Category({
-      title: 'another category title',
-      description: 'another category description',
-      active: false,
-      createdAt: now,
-    });
-
-    expect(category.description).toBe('another category description');
+  it("should get and set description", () => {
+    const category = new Category({title: 'Filmes', description: 'Longas metragens'});
+    expect(category.description).toBe('Longas metragens');
+    
+    category["description"] = 'Jamelão';
+    expect(category.description).toBe('Jamelão');
   })
 
-  test("is getting active property?", () => {
-    const now = new Date();
+  it('should update a category', () => {
+    const category = new Category({title: 'Animões', description: 'japonesos'});
+    category.update('Animes', 'Animações japonesas TOP');
 
-    const category = new Category({
-      title: 'another category title',
-      description: 'another category description',
-      active: false,
-      createdAt: now,
-    });
-
-    expect(category.active).toBeFalsy();
+    expect(category.title).toBe('Animes');
+    expect(category.description).toBe('Animações japonesas TOP');
   })
 
-  test("is getting createdAt property?", () => {
-    const now = new Date();
+  it("should activate and deactivate category", () => {
+    const category = new Category({title: 'Animões', description: 'japonesos', active: false});
 
-    const category = new Category({
-      title: 'another category title',
-      description: 'another category description',
-      active: false,
-      createdAt: now,
-    });
-
-    expect(category.createdAt).toBe(now);
-  })
-
-  test("is setting description property?", () => {
-    const now = new Date();
-
-    let category = new Category({
-      title: 'another category title',
-      description: 'another category description',
-      active: false,
-      createdAt: now,
-    });
-
-    category["description"] = null;
-    expect(category.description).toBe(null);
-  })
-  
-  test("is setting the active property?", () => {
-    const now = new Date();
-
-    let category = new Category({
-      title: 'another category title',
-      description: 'another category description',
-      active: false,
-      createdAt: now,
-    });
-
-    category["active"] = true;
+    category.activate();
     expect(category.active).toBeTruthy();
+
+    category.deactivate();
+    expect(category.active).toBeFalsy();
   })
 })

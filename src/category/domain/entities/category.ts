@@ -11,7 +11,7 @@ export type CategoryProperties = {
 export class Category extends Entity<CategoryProperties> {
   constructor (public readonly props: CategoryProperties, id?: UniqueEntityId){
     super(props, id);
-    this.props.description = this.props.description ?? null;
+    this.description = this.props.description ?? null;
     this.props.active = this.props.active ?? true;
     this.props.createdAt = this.props.createdAt ?? new Date();
   }
@@ -34,6 +34,10 @@ export class Category extends Entity<CategoryProperties> {
   }
 
   // setters
+  private set title(value: string) {
+    this.props.title = value ?? null;
+  }
+
   private set description(value: string) {
     this.props.description = value ?? null;
   }
@@ -41,5 +45,17 @@ export class Category extends Entity<CategoryProperties> {
   private set active(value: boolean) {
     this.props.active = value ?? true;
   }
-}
 
+  update(title: string, description: string) {
+    this.title = title;
+    this.description = description;
+  }
+
+  activate() {
+    this.active = true;
+  }
+
+  deactivate() {
+    this.active = false;
+  }
+}
