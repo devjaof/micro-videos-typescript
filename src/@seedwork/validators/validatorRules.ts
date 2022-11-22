@@ -23,7 +23,7 @@ export default class ValidatorRules {
 
   maxLength(max: number): this {
     if(this.value.length > max) {
-      throw new ValidationError(`The max length for the ${this.property} is 255.`);
+      throw new ValidationError(`The ${this.property} is over the max-length.`);
     }
     return this;
   }

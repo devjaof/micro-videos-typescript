@@ -23,8 +23,8 @@ function assertIsInvalid({
 }: ExpectedRule) {
   expect(() => {
     const validator = ValidatorRules.values(value, property);
-    const method = validator[rule];
-    method.apply(validator, ...params)
+    const method: any = validator[rule];
+    method.apply(validator, params)
 
   }).toThrow(error);
 }
@@ -75,7 +75,7 @@ describe('ValidatorRules Unit Tests', () => {
 
   it('should throw error when value max length > 255', () => {
     const arrange: Values[] = [
-      {value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', property: 'Category'},
+      {value: 'aadssaaaasdasdasad', property: 'Category'},
     ] 
 
     arrange.forEach((item: Values) => {
@@ -84,7 +84,7 @@ describe('ValidatorRules Unit Tests', () => {
         property: item.property,
         rule: "maxLength",
         error: new ValidationError(`The ${item.property} is over the max-length.`),
-        params: 250
+        params: [10]
       })
     })
   })
