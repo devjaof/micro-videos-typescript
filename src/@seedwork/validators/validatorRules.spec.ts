@@ -190,4 +190,32 @@ describe('ValidatorRules Unit Tests', () => {
       })
     })
   })
+
+  // rule combination tests
+  it('should throw error when two or more rules are combined', () => {
+    let validator = ValidatorRules.values(null, 'field');
+    expect(() => {
+      validator.required().string();
+    }).toThrow('The field is required.');
+
+    validator = ValidatorRules.values(6, 'field');
+    expect(() => {
+      validator.required().string();
+    }).toThrow('The field must be a string.');
+
+    validator = ValidatorRules.values('aqui tem mais de 15 caracteres com certeza', 'field');
+    expect(() => {
+      validator.required().string().maxLength(15);
+    }).toThrow('The field is over the max-length.');
+
+    validator = ValidatorRules.values(undefined, 'field');
+    expect(() => {
+      validator.required().boolean();
+    }).toThrow('The field is required.');
+
+    validator = ValidatorRules.values('true', 'field');
+    expect(() => {
+      validator.required().boolean();
+    }).toThrow('The field must be a boolean.');
+  })
 }) 

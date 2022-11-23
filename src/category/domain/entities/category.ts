@@ -12,6 +12,7 @@ export class Category extends Entity<CategoryProperties> {
   constructor (public readonly props: CategoryProperties, id?: UniqueEntityId){
     // antes de passar as propriedades:
     // validar objeto na íntegra, objetos filhos, e validação adiada ou deferida
+    // validatorRules.ts
 
 
     super(props, id);
