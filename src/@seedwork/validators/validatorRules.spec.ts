@@ -77,7 +77,7 @@ describe('ValidatorRules Unit Tests', () => {
       {value: 5, property: 'Category'},
       {value: {maluco: 'sim'}, property: 'Category'},
       {value: true, property: 'Category'},
-      {value: new Date, property: 'Category'},
+      {value: new Date(), property: 'Category'},
     ];
 
     arrange.forEach((item: Values) => {
@@ -110,7 +110,7 @@ describe('ValidatorRules Unit Tests', () => {
     const arrange: Values[] = [
       {value: 'true', property: 'active'},
       {value: 5, property: 'active'},
-      {value: new Date, property: 'active'}
+      {value: new Date(), property: 'active'}
     ] 
 
     arrange.forEach((item: Values) => {
@@ -118,7 +118,7 @@ describe('ValidatorRules Unit Tests', () => {
         value: item.value,
         property: item.property,
         rule: "boolean",
-        error: new ValidationError(`The ${item.property} must be a boolean`)
+        error: new ValidationError(`The ${item.property} must be a boolean.`)
       })
     })
   })
