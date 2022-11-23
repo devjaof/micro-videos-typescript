@@ -1,10 +1,16 @@
 ### A fazer
 - Criação do container de desenvolvimento em cloud - OK
 - Aplicação Node com Typescript - OK
-- Entidade Categoria e seus testes - finalizando
-- UseCases, Repository e seus testes
-
-- Repetir para outras entidades (Genre, CastMember etc)
+- Entidade core e testes unitários - OK
+- Testes de integração - fazendo
+- Repository, UseCase
+- Integração do Core com o Nest.Js
+- API Rest
+- DB - Sequelize
+- CategoriesModule
+- Testes end-to-end
+- Migrations
+- Entidade Cast Member
 
 ### Ferramentas
 - CleanArc
