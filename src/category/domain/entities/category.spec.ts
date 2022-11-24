@@ -2,12 +2,11 @@ import { Category, CategoryProperties } from './category';
 import UniqueEntityId from '../../../@seedwork/domain/valueObjects/uniqueEntityIdVo';
 
 describe("Category Tests", () => {
-  beforeAll(() => {
-    jest.useFakeTimers()
-    .setSystemTime(new Date('19 Nov 2022 05:00:00 GMT').getTime());
-  });
-
+  beforeEach(() => {
+    Category.validate = jest.fn();
+  })
   test("category with only non mandatory props and the description", () => {
+
     const date = new Date();
     const category = new Category({
       title: 'another category title',
@@ -20,6 +19,8 @@ describe("Category Tests", () => {
       active: true,
       createdAt: date
     });
+    
+    expect(Category.validate).toHaveBeenCalled();
   })
 
   test("category with non mandatory props and omitting the date", () => {
@@ -36,6 +37,8 @@ describe("Category Tests", () => {
       active: true,
       createdAt: now
     });
+    expect(Category.validate).toHaveBeenCalled();
+
   })
 
   test("id field validations", () => {
@@ -78,6 +81,9 @@ describe("Getters and Setters", () => {
 
     expect(category.title).toBe('Animes');
     expect(category.description).toBe('Animações japonesas TOP');
+
+    expect(Category.validate).toHaveBeenCalledTimes(2);
+
   })
 
   it("should activate and deactivate category", () => {
