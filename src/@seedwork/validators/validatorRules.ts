@@ -30,7 +30,7 @@ export default class ValidatorRules {
   
   boolean(): typeof this {
     if(!isEmpty(this.value) && typeof this.value !== "boolean") {
-      throw new ValidationError(`The ${this.property} must be a boolean.` );
+      throw new ValidationError(`The ${this.property} must be a boolean.`);
     }
     return this;
   }
