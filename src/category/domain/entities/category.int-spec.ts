@@ -40,4 +40,52 @@ describe("Category Integration Tests", () => {
       );
     })
   })
+
+  describe("update method", () => {
+    it("should not validated a invalid category title update", () => {
+      const category = new Category({title: 'Filmes'});
+
+      // required
+      expect(() => category.update(null)).toThrow(
+        new ValidationError('The title is required.')
+      );
+      expect(() => category.update(undefined)).toThrow(
+        new ValidationError('The title is required.')
+      );
+      expect(() => category.update("")).toThrow(
+        new ValidationError('The title is required.')
+      );
+
+      //max length
+      expect(() => category.update("Title".repeat(256))).toThrow(
+        new ValidationError('The title is over the max-length.')
+      );
+
+      // string
+      expect(() => category.update(5 as any)).toThrow(
+        new ValidationError('The title must be a string.')
+      );
+    })
+
+    it("should not validated a invalid category description update", () => {
+      const category = new Category({title: 'Filmes', description: 'Loucurinhas'});
+
+      // string
+      expect(() => category.update('Filmes', 5 as any)).toThrow(
+        new ValidationError('The description must be a string.')
+      );
+    })
+
+    it("should not validated a invalid category title and description update", () => {
+      const category = new Category({title: 'Filmes', description: 'Loucurinhas'});
+
+      expect(() => category.update('', 5 as any)).toThrow(
+        new ValidationError('The title is required.')
+      );
+
+      expect(() => category.update('Animes', 5 as any)).toThrow(
+        new ValidationError('The description must be a string.')
+      );
+    })
+  })
 })

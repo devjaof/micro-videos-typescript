@@ -55,7 +55,7 @@ export class Category extends Entity<CategoryProperties> {
     this.props.active = value ?? true;
   }
 
-  update(title: string, description: string) {
+  update(title?: string, description?: string) {
     Category.validate({
       title, 
       description
