@@ -33,5 +33,11 @@ describe("Category Integration Tests", () => {
         new ValidationError('The description must be a string.')
       );
     })
+
+    it("should not validated a invalid category active prop", () => {
+      expect(() => new Category({title: 'Filme', active: 5 as any})).toThrow(
+        new ValidationError('The active must be a boolean.')
+      );
+    })
   })
 })

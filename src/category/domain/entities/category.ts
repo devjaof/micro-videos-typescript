@@ -15,7 +15,8 @@ export class Category extends Entity<CategoryProperties> {
     // validar objeto na íntegra, objetos filhos, e validação adiada ou deferida
     Category.validate({
       title: props.title, 
-      description: props.description
+      description: props.description,
+      active: props.active
     });
 
     super(props, id);
@@ -64,12 +65,6 @@ export class Category extends Entity<CategoryProperties> {
     this.description = description;
   }
 
-  static validate(props: CategoryProperties) {
-    ValidatorRules.values(props.title, 'title').required().string().maxLength(250);
-    ValidatorRules.values(props.description, 'description').string();
-    ValidatorRules.values(props.active, 'active').boolean();
-  }  
-
   activate() {
     this.active = true;
   }
@@ -77,4 +72,10 @@ export class Category extends Entity<CategoryProperties> {
   deactivate() {
     this.active = false;
   }
+
+  static validate(props: CategoryProperties) {
+    ValidatorRules.values(props.title, 'title').required().string().maxLength(250);
+    ValidatorRules.values(props.description, 'description').string();
+    ValidatorRules.values(props.active, 'active').boolean();
+  }  
 }
