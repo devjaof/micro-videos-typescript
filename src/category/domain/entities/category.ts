@@ -1,6 +1,6 @@
 import Entity from '../../../@seedwork/entity/entity';
 import UniqueEntityId from '../../../@seedwork/domain/valueObjects/uniqueEntityIdVo';
-import ValidatorRules from '../../../@seedwork/validators/validatorRules';
+import CategoryValidatorFactory from '../validators/categoryValidator';
 
 export type CategoryProperties = {
  title: string;
@@ -73,9 +73,15 @@ export class Category extends Entity<CategoryProperties> {
     this.active = false;
   }
 
+  // deprecated:
+  // static validate(props: CategoryProperties) {
+  //   ValidatorRules.values(props.title, 'title').required().string().maxLength(250);
+  //   ValidatorRules.values(props.description, 'description').string();
+  //   ValidatorRules.values(props.active, 'active').boolean();
+  // }  
+
   static validate(props: CategoryProperties) {
-    ValidatorRules.values(props.title, 'title').required().string().maxLength(250);
-    ValidatorRules.values(props.description, 'description').string();
-    ValidatorRules.values(props.active, 'active').boolean();
-  }  
+    const validator = CategoryValidatorFactory.create();
+    validator.validate(props);
+  }
 }
