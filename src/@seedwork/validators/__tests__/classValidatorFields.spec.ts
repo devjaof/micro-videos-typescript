@@ -11,7 +11,7 @@ describe('ClassValidatorFields unit tests', () => {
     expect(validator.validatedData).toBeNull;
   })
 
-  it('should validate on errors', () => {
+  it('should validate with errors', () => {
     const spyValidateSync = jest.spyOn(libClassValidator, 'validateSync');
     spyValidateSync.mockReturnValue([
       {property: 'field', constraints: {isRequired: 'some error'}}
