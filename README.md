@@ -13,7 +13,7 @@
 - Entidade Cast Member
 
 ### Ferramentas
-- CleanArc
+- CleanArch
 - Typescript
 - Jest
 - Nest.js
