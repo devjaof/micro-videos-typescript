@@ -12,7 +12,7 @@
 - Migrations
 - Entidade Cast Member
 
-### Ferramentas
+### Ferramentas e técnicas
 - CleanArch
 - Typescript
 - Jest
