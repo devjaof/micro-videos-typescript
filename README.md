@@ -14,8 +14,8 @@
 
 ### Ferramentas e técnicas
 - CleanArch
+- TDD
 - Typescript
 - Jest
 - Nest.js
 - RabbitMQ e encoder de vídeo
-- Testes E2E
