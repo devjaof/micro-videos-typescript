@@ -5,7 +5,7 @@ class StubRules {
   @MaxLength(256)
   @IsString()
   @IsNotEmpty()
-  name: string;
+  title: string;
 
   @IsNumber()
   @IsNotEmpty()
@@ -28,10 +28,10 @@ describe('ClassValidatorFields integration tests', () => {
 
     expect(validator.validate(null)).toBeFalsy()
     expect(validator.errors).toStrictEqual({
-      name: [
-        'name should not be empty',
-        'name must be a string',
-        'name must be shorter than or equal to 256 characters'
+      title: [
+        'title should not be empty',
+        'title must be a string',
+        'title must be shorter than or equal to 256 characters'
       ],
       price: [
         'price should not be empty',
