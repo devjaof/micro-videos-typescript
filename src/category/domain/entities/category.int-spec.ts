@@ -3,7 +3,6 @@ import { Category } from "./category"
 
 describe("Category Integration Tests", () => {
   describe("create method", () => {
-    //invalid cases
     it("should not validated a invalid category title prop", () => {
       // required
       expect(() => new Category({title: null})).toThrow(
