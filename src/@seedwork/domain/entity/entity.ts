@@ -1,4 +1,4 @@
-import UniqueEntityId from "../../@seedwork/domain/valueObjects/uniqueEntityIdVo";
+import UniqueEntityId from "../valueObjects/uniqueEntityIdVo";
 
 export default abstract class  Entity<Props> {
   public readonly UniqueEntityId: UniqueEntityId;

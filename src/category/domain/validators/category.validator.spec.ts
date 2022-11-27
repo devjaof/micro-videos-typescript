@@ -5,50 +5,40 @@ describe('CategoryValidator tests', () => {
 
   beforeEach(() => (validator = CategoryValidatorFactory.create()));
   test('invalidation cases for title field', () => {
-    let isValid = validator.validate({title: null});
-    expect(isValid).toBeFalsy();
-    expect(validator.errors['title']).toStrictEqual(
-      [
-        'title should not be empty',
-        'title must be a string',
-        'title must be shorter than or equal to 256 characters'
-      ],
-    )
+    const arrange = [
+      {isValid: validator.validate({title: null}), data: null as any},
+      {isValid: validator.validate({title: undefined}), data: undefined as any},
+      {isValid: validator.validate({title: ''}), data: ''},
+      {isValid: validator.validate({title: 5 as any}), data: 5 as any},
+      {isValid: validator.validate({title: "teste".repeat(256)}), data: "teste".repeat(256)},
+    ];
 
-    isValid = validator.validate({title: ""});
-    expect(isValid).toBeFalsy();
-    expect(validator.errors['title']).toStrictEqual(
-      [
-        'title should not be empty',
-      ],
-    )
-
-    isValid = validator.validate({title: 5 as any});
-    expect(isValid).toBeFalsy();
-    expect(validator.errors['title']).toStrictEqual(
-      [
-        'title must be a string',
-        'title must be shorter than or equal to 256 characters'
-      ],
-    )
-
-    isValid = validator.validate({title: "teste".repeat(256)});
-    expect(isValid).toBeFalsy();
-    expect(validator.errors['title']).toStrictEqual(
-      [
-        'title must be shorter than or equal to 256 characters'
-      ],
-    )
+    arrange.forEach((each) => {
+      expect(each.isValid).toBeFalsy();
+      expect({validator, data: each.data}).toContainErrorMessages({
+        title: [
+          'title should not be empty',
+          'title must be a string',
+          'title must be shorter than or equal to 256 characters'
+        ]
+      })
+    })
   })
 
   test('validation cases', () => {
-    expect(validator.validate({title: "Filmes"})).toBeTruthy();
-    expect(validator.validatedData).toStrictEqual(new CategoryRules({title: "Filmes"}));
+    const arrange = [
+      {isValid: validator.validate({title: "Filmes"}), data: "Filmes"},
+    ];
 
-    expect(validator.validate({title: "Filmes", description: undefined})).toBeTruthy();
-    expect(validator.validate({title: "Filmes", description: null})).toBeTruthy();
-    expect(validator.validate({title: "Filmes", active: true})).toBeTruthy();
-    expect(validator.validate({title: "Filmes", active: false})).toBeTruthy();
+    arrange.forEach((each) => {
+      expect(each.isValid).toBeTruthy();
+      // expect({validator, data: each.data}).not.toContainErrorMessages({
+      //   title: [
+      //     'title should not be empty',
+      //     'title must be a string',
+      //     'title must be shorter than or equal to 256 characters'
+      //   ]
+      // })
+    })
   })
-
 })

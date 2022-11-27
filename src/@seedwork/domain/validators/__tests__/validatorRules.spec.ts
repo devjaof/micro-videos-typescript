@@ -1,4 +1,5 @@
-import ValidationError from "../../errors/validation.error";
+
+import { ValidationError } from "class-validator";
 import ValidatorRules from "../validatorRules"
 
 type Values = {
@@ -15,10 +16,10 @@ type ExpectedRule = {
 }
 
 function assertIsInvalid({
-  value, 
-  property, 
-  rule, 
-  error, 
+  value,
+  property,
+  rule,
+  error,
   params = [],
 }: ExpectedRule) {
   expect(() => {
