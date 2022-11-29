@@ -66,22 +66,37 @@ describe("Category Integration Tests", () => {
     it("should not validated a invalid category description update", () => {
       const category = new Category({title: 'Filmes', description: 'Loucurinhas'});
 
-      // string
-      expect(() => category.update('Filmes', 5 as any)).toThrow(
-        new ValidationError('The description must be a string.')
-      );
+      expect(() => category.update('Filmes', 5 as any)).toContainErrorMessages({
+        description: [
+          'description must be a string',
+        ]
+      });
     })
 
     it("should not validated a invalid category title and description update", () => {
       const category = new Category({title: 'Filmes', description: 'Loucurinhas'});
+      
+      expect(() => category.update(5 as any)).toContainErrorMessages({
+        title: [
+          'title must be a string',
+          'title must be shorter than or equal to 256 characters'
+        ]
+      });
 
-      expect(() => category.update('', 5 as any)).toThrow(
-        new ValidationError('The title is required.')
-      );
+      expect(() => category.update('', 5 as any)).toContainErrorMessages({
+        title: [
+          'title should not be empty',
+        ],
+        description: [
+          'description must be a string',
+        ]
+      });
 
-      expect(() => category.update('Animes', 5 as any)).toThrow(
-        new ValidationError('The description must be a string.')
-      );
+      expect(() => category.update('Animes', 5 as any)).toContainErrorMessages({
+        description: [
+          'description must be a string',
+        ]
+      });
     })
   })
 })
