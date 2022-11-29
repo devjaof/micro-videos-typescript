@@ -4,39 +4,21 @@ import { Category } from "../category"
 describe("Category Integration Tests", () => {
   describe("create method", () => {
     it("should not validated a invalid category title prop", () => {
-      // required
-      expect(() => new Category({title: null})).toThrow(
-        new ValidationError('The title is required.')
-      );
-      expect(() => new Category({title: ""})).toThrow(
-        new ValidationError('The title is required.')
-      );
-      expect(() => new Category({title: undefined})).toThrow(
-        new ValidationError('The title is required.')
-      );
-  
-      // max length
-      expect(() => new Category({title: 'test'.repeat(256)})).toThrow(
-        new ValidationError('The title is over the max-length.')
-      );
-  
-      // string
-      expect(() => new Category({title: 5 as any})).toThrow(
-        new ValidationError('The title must be a string.')
-      );
+      expect(() => new Category({title: null})).toContainErrorMessages({
+        title: [
+          'title should not be empty',
+          'title must be a string',
+          'title must be shorter than or equal to 256 characters'
+        ]
+      });
     })
   
     it("should not validated a invalid category description prop", () => {
-      // string
-      expect(() => new Category({title: 'Filme', description: 5 as any})).toThrow(
-        new ValidationError('The description must be a string.')
-      );
-    })
-
-    it("should not validated a invalid category active prop", () => {
-      expect(() => new Category({title: 'Filme', active: 5 as any})).toThrow(
-        new ValidationError('The active must be a boolean.')
-      );
+      expect(() => new Category({title: 'Filme', description: 5 as any})).toContainErrorMessages({
+        description: [
+          'description must be a string',
+        ]
+      });
     })
   })
 
@@ -44,26 +26,41 @@ describe("Category Integration Tests", () => {
     it("should not validated a invalid category title update", () => {
       const category = new Category({title: 'Filmes'});
 
-      // required
-      expect(() => category.update(null)).toThrow(
-        new ValidationError('The title is required.')
-      );
-      expect(() => category.update(undefined)).toThrow(
-        new ValidationError('The title is required.')
-      );
-      expect(() => category.update("")).toThrow(
-        new ValidationError('The title is required.')
-      );
+      expect(() => category.update(null)).toContainErrorMessages({
+        title: [
+          'title should not be empty',
+          'title must be a string',
+          'title must be shorter than or equal to 256 characters'
+        ]
+      });
 
-      //max length
-      expect(() => category.update("Title".repeat(256))).toThrow(
-        new ValidationError('The title is over the max-length.')
-      );
+      expect(() => category.update(undefined)).toContainErrorMessages({
+        title: [
+          'title should not be empty',
+          'title must be a string',
+          'title must be shorter than or equal to 256 characters'
+        ]
+      });
 
-      // string
-      expect(() => category.update(5 as any)).toThrow(
-        new ValidationError('The title must be a string.')
-      );
+      expect(() => category.update("")).toContainErrorMessages({
+        title: [
+          'title should not be empty',
+        ]
+      });
+
+      expect(() => category.update("Title".repeat(256))).toContainErrorMessages({
+        title: [
+          'title must be shorter than or equal to 256 characters'
+        ]
+      });
+
+      expect(() => category.update(5 as any)).toContainErrorMessages({
+        title: [
+          'title must be a string',
+          'title must be shorter than or equal to 256 characters'
+        ]
+      });
+
     })
 
     it("should not validated a invalid category description update", () => {
