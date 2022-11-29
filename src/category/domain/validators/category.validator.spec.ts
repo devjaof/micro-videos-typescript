@@ -32,13 +32,6 @@ describe('CategoryValidator tests', () => {
 
     arrange.forEach((each) => {
       expect(each.isValid).toBeTruthy();
-      // expect({validator, data: each.data}).not.toContainErrorMessages({
-      //   title: [
-      //     'title should not be empty',
-      //     'title must be a string',
-      //     'title must be shorter than or equal to 256 characters'
-      //   ]
-      // })
     })
   })
 })
