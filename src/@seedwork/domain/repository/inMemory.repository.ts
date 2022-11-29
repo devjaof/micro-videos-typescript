@@ -9,19 +9,23 @@ export default abstract class InMemoryRepository<E extends Entity> implements Re
   async insert(entity: E): Promise<void> {
     this.items.push(entity);
   }
+
   async findById(id: string | uniqueEntityIdVo): Promise<E> {
     const _id = `${id}`;
     return this._get(_id);
   }
+
   async findAll(): Promise<E[]> {
     return this.items;
   }
+
   async update(entity: E): Promise<void> {
     await this._get(entity.id);
     
     const index = this.items.findIndex(i => i.id === entity.id);
     this.items[index] = entity;
   }
+
   async delete(id: string | uniqueEntityIdVo): Promise<void> {
     const _id = `${id}`;
     await this._get(_id);
