@@ -1,7 +1,7 @@
 import Entity from "../entity/entity";
 import NotFoundError from "../errors/notFound.error";
 import uniqueEntityIdVo from "../valueObjects/uniqueEntityIdVo";
-import { RepositoryInterface } from "./repositoryContracts";
+import { RepositoryInterface, SearchableRepositoryInterface } from "./repositoryContracts";
 
 export default abstract class InMemoryRepository<E extends Entity> implements RepositoryInterface<E>{
   items: E[] = [];
@@ -43,3 +43,9 @@ export default abstract class InMemoryRepository<E extends Entity> implements Re
     return item;
   }
 }
+
+export abstract class InMemorySearchableRepository<E extends Entity> 
+  extends InMemoryRepository<E>
+  implements SearchableRepositoryInterface<E, any, any> {
+
+  }
