@@ -1,4 +1,4 @@
-import { SearchParams } from "./repositoryContracts"
+import { SearchParams, SearchResult } from "./repositoryContracts"
 
 describe("SearchParams unit tests", () => {
   test("page prop", () => {
@@ -95,6 +95,31 @@ describe("SearchParams unit tests", () => {
 
     arrange.forEach(item => {
       expect(new SearchParams({sortField: "field", sort: item.sort as any}).sort).toBe(item.expected);
+    })
+  })
+})
+
+describe("SeachResult unit tests", () => {
+  test('constructor props', () => {
+    let result = new SearchResult({
+      items: ['entity1', 'entity2'] as any,
+      total: 4,
+      currentPage: 1,
+      perPage: 2,
+      sortField: null,
+      sort: null,
+      filter: null
+    })
+
+    expect(result.toJSON()).toStrictEqual({
+      items: ['entity1', 'entity2'] as any,
+      total: 4,
+      currentPage: 1,
+      perPage: 2,
+      lastPage: 2,
+      sortField: null,
+      sort: null,
+      filter: null
     })
   })
 })

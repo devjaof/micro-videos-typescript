@@ -1,3 +1,4 @@
+import { timeStamp } from "console";
 import Entity from "../entity/entity";
 import UniqueEntityId from "../valueObjects/uniqueEntityIdVo";
 
@@ -90,11 +91,56 @@ export class SearchParams {
   } 
 }
 
+export type SearchResultProps<E extends Entity, Filter> = {
+  items: E[];
+  total: number;
+  currentPage: number;
+  perPage: number;
+  sortField: string | null;
+  sort: string | null;
+  filter: Filter;
+}
+export class SearchResult<E extends Entity, Filter = string> {
+  readonly items: E[];
+  readonly total: number;
+  readonly currentPage: number;
+  readonly perPage: number;
+  readonly lastPage: number;
+  readonly sortField: string | null;
+  readonly sort: string | null;
+  readonly filter: Filter | null;
+
+  constructor(props: SearchResultProps<E, Filter>) {
+    this.items = props.items;
+    this.total = props.total;
+    this.currentPage = props.currentPage;
+    this.perPage = props.perPage;
+    this.lastPage = Math.ceil(this.total / this.perPage);
+    this.sortField = props.sortField;
+    this.sort = props.sort;
+    this.filter = props.filter;
+  }
+
+  toJSON() {
+    return {
+      items: this.items,
+      total: this.total,
+      currentPage: this.currentPage,
+      perPage: this.perPage,
+      lastPage: this.lastPage,
+      sortField: this.sortField,
+      sort: this.sort,
+      filter: this.filter
+    }
+  }
+}
+
 export interface SearchableRepositoryInterface<
   E extends Entity, 
-  SearchOutput,
+  Filter = string,
   SearchInput = SearchParams, 
-  > 
+  SearchOutput = SearchResult<E, Filter>,
+  >
   extends RepositoryInterface<E> {
   search(props: SearchInput): Promise<SearchOutput>;
 }
