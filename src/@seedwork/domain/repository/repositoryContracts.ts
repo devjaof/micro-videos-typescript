@@ -64,7 +64,7 @@ export class SearchParams {
     return this._sort;
   }
   private set sort(value: string | null) {
-    if(!this._sort) {
+    if(!this._sortField) {
       this._sort = null;
       return;
     }
