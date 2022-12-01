@@ -15,20 +15,23 @@ export type SortDirection = "asc" | "desc";
 export type SearchProps<Filter = string> = {
   page?: number;
   perPage?: number;
-  sort?: SortDirection | null;
   sortField?: string | null;
+  sort?: SortDirection | null;
   filter?: Filter | null;
 }
 export class SearchParams {
   protected _page: number;
   protected _perPage: number = 15;
-  protected _sort: SortDirection | null;
   protected _sortField: string | null;
+  protected _sort: SortDirection | null;
   protected _filter: string | null;
 
   constructor(props: SearchProps = {}) {
     this.page = props.page;
     this.perPage = props.perPage;
+    this.sortField = props.sortField;
+    this.sort = props.sort;
+    this.filter = props.filter;
   }
 
   get page() {
@@ -48,7 +51,7 @@ export class SearchParams {
     return this._perPage;
   }
   private set perPage(value: number) {
-    let _perPage = Number(value);
+    let _perPage = value === true as any ? this._perPage : Number(value);
 
     if(Number.isNaN(_perPage) || _perPage <= 0 || parseInt(_perPage as any) !== _perPage) {
       _perPage = this._perPage;
@@ -61,13 +64,13 @@ export class SearchParams {
     return this._sort;
   }
   private set sort(value: string | null) {
-    if(!this.sort) {
-      this.sort = null;
+    if(!this._sort) {
+      this._sort = null;
       return;
     }
 
     const direction = `${value}`.toLowerCase();
-    this.sort = direction !== "asc" && direction !== "desc" ? "desc" : direction;
+    this._sort = direction !== "asc" && direction !== "desc" ? "desc" : direction;
   }
 
   get sortField() {
@@ -75,7 +78,7 @@ export class SearchParams {
   }
   private set sortField(value: string | null) {
     this._sortField = 
-    value === null || value === undefined || value === "" ? null : `${value}`
+      value === null || value === undefined || value === "" ? null : `${value}`
   }
 
   get filter() {
@@ -83,7 +86,7 @@ export class SearchParams {
   }
   private set filter(value: string | null) {
     this._filter = 
-    value === null || value === undefined || value === "" ? null : `${value}`
+      value === null || value === undefined || value === "" ? null : `${value}`
   } 
 }
 
