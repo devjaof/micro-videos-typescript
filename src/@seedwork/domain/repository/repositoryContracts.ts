@@ -61,7 +61,7 @@ export class SearchParams {
     this._perPage = _perPage;
   }
 
-  get sort() {
+  get sort(): string | null {
     return this._sort;
   }
   private set sort(value: string | null) {
@@ -74,7 +74,7 @@ export class SearchParams {
     this._sort = direction !== "asc" && direction !== "desc" ? "desc" : direction;
   }
 
-  get sortField() {
+  get sortField(): string | null {
     return this._sortField;
   }
   private set sortField(value: string | null) {
@@ -82,7 +82,7 @@ export class SearchParams {
       value === null || value === undefined || value === "" ? null : `${value}`
   }
 
-  get filter() {
+  get filter(): string | null {
     return this._filter;
   }
   private set filter(value: string | null) {

@@ -1,7 +1,7 @@
 import Entity from "../entity/entity";
 import NotFoundError from "../errors/notFound.error";
 import uniqueEntityIdVo from "../valueObjects/uniqueEntityIdVo";
-import { RepositoryInterface, SearchableRepositoryInterface } from "./repositoryContracts";
+import { RepositoryInterface, SearchableRepositoryInterface, SearchParams, SearchResult } from "./repositoryContracts";
 
 export default abstract class InMemoryRepository<E extends Entity> implements RepositoryInterface<E>{
   items: E[] = [];
@@ -46,6 +46,60 @@ export default abstract class InMemoryRepository<E extends Entity> implements Re
 
 export abstract class InMemorySearchableRepository<E extends Entity> 
   extends InMemoryRepository<E>
-  implements SearchableRepositoryInterface<E, any, any> {
+  implements SearchableRepositoryInterface<E> {
+    sortableFields: string[] = []
 
+    async search(props: any): Promise<SearchResult<E, any>> {
+      const filteredItems = 
+        await this.applyFilter(this.items, props.filter);
+      
+      const sortedItems = 
+        await this.applySort(filteredItems, props.sortField, props.sort);
+
+      const paginatedItems = 
+        await this.applySort(sortedItems, props.page, props.perPage);
+
+      return new SearchResult({
+        items: paginatedItems,
+        total: filteredItems.length,
+        currentPage: props.page,
+        perPage: props.perPage,
+        sortField: props.sortField,
+        sort: props.sort,
+        filter: props.filter
+      });
+    }
+
+    protected abstract applyFilter(
+      items: E[], 
+      filter: string | null): 
+      Promise<E[]>;
+
+    protected async applySort(
+      items: E[], 
+      sortField: string | null, 
+      sort: string | null): 
+      Promise<E[]>{
+      return [...items].sort((a, b) => {
+        if(a.props[sortField] < b.props[sortField]) {
+          return sort === "asc" ? -1 : 1;
+        }
+
+        if(a.props[sortField] > b.props[sortField]) {
+          return sort === "asc" ? 1 : -1;
+        }
+
+        return 0;
+      })
+    };
+
+    protected async applyPaginate(
+      items: E[], 
+      page: SearchParams['page'], 
+      perPage: SearchParams['perPage']): 
+      Promise<E[]>{
+        const start = (page - 1) * perPage; // 1 * 15 = 15
+        const limit = start + perPage; // 15 + 15 = 30
+        return items.slice(start, limit)
+    };
   }
