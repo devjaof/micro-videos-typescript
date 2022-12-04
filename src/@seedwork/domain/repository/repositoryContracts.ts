@@ -114,7 +114,7 @@ export class SearchResult<E extends Entity = Entity, Filter = string> {
     this.items = props.items;
     this.total = props.total;
     this.currentPage = props.currentPage;
-    this.perPage = props.perPage | 15;
+    this.perPage = props.perPage ? props.perPage : 15;
     this.lastPage = Math.ceil(this.total / this.perPage);
     this.sortField = props.sortField;
     this.sort = props.sort;
