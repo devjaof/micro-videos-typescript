@@ -3,6 +3,7 @@
 // será alterado caso a forma de criar uma categoria tbm seja alterada.
 // não fazer extends em casos de uso, isso quebra o single responsability
 
+import UseCaseInterface from "../../../@seedwork/application/useCase";
 import CategoryRepository from "../../domain/repository/category.repository";
 import { CategoryOutput } from "./dtos/categoryOutput.dto";
 
@@ -11,7 +12,8 @@ type Input = {
   id: string;
 } 
 
-export default class GetCategoryUseCase {
+export default class GetCategoryUseCase 
+  implements UseCaseInterface<Input, CategoryOutput>{
   // dependency injection & dependency inversion
    constructor(private categoryRepo: CategoryRepository.Repository) {
    }
