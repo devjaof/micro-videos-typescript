@@ -6,7 +6,7 @@
 import UseCaseInterface from "../../../@seedwork/application/useCase";
 import { Category } from "../../domain/entities/category";
 import CategoryRepository from "../../domain/repository/category.repository";
-import { CategoryOutputDto } from "../dtos/categoryOutput.dto";
+import { CategoryOutput, CategoryOutputMapper } from "../dtos/categoryOutput";
 
 // DTO - Data Transfer Objects
 type Input = {
@@ -16,21 +16,15 @@ type Input = {
 } 
 
 export default class CreateCategoryUseCase 
-  implements UseCaseInterface<Input, CategoryOutputDto> {
+  implements UseCaseInterface<Input, CategoryOutput> {
   // dependency injection & dependency inversion
    constructor(private categoryRepo: CategoryRepository.Repository) {
    }
 
-  async execute(input: Input): Promise<CategoryOutputDto> {
+  async execute(input: Input): Promise<CategoryOutput> {
     const entity = new Category(input);
     await this.categoryRepo.insert(entity);
 
-    return {
-      id: entity.id,
-      title: entity.title,
-      description: entity.description,
-      active: entity.active,
-      createdAt: entity.createdAt
-    };
+    return CategoryOutputMapper.toOutput(entity);
   }
 }
