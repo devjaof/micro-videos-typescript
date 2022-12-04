@@ -1,5 +1,6 @@
-import Entity from "../../../../@seedwork/domain/entity/entity";
+import Entity from "../../entity/entity";
 import { InMemorySearchableRepository } from "../inMemory.repository";
+import { SearchParams, SearchResult } from "../repositoryContracts";
 
 type StubEntityProps = {
   title: string;
@@ -112,6 +113,22 @@ describe('InMemorySearchableRepository unit tests', () => {
   })
 
   describe('search method', () => {
-    
+    it('should apply only pagination when other param is null', async () => {
+      const entity = new StubEntity({title: "a", price: 8});
+      repository.items = Array(16).fill(entity);
+
+      console.log(repository);
+
+      const result = await repository.search(new SearchParams());
+      expect(result).toStrictEqual(new SearchResult({
+        items: Array(15).fill(entity),
+        total: 16,
+        currentPage: 1,
+        perPage: 15,
+        sortField: null,
+        sort: null,
+        filter: null
+      }))
+    })
   })
 })
