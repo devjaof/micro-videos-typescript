@@ -3,25 +3,21 @@
 // será alterado caso a forma de criar uma categoria tbm seja alterada.
 // não fazer extends em casos de uso, isso quebra o single responsability
 
-import { Category } from "../../domain/entities/category";
 import CategoryRepository from "../../domain/repository/category.repository";
 import { CategoryOutput } from "./dtos/categoryOutput.dto";
 
 // DTO - Data Transfer Objects
 type Input = {
-  title: string;
-  description?: string;
-  active?: boolean;
+  id: string;
 } 
 
-export default class CreateCategoryUseCase {
+export default class GetCategoryUseCase {
   // dependency injection & dependency inversion
    constructor(private categoryRepo: CategoryRepository.Repository) {
    }
 
   async execute(input: Input): Promise<CategoryOutput> {
-    const entity = new Category(input);
-    await this.categoryRepo.insert(entity);
+    const entity = await this.categoryRepo.findById(input.id);
 
     return {
       id: entity.id,
