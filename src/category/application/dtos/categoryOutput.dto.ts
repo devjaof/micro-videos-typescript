@@ -1,4 +1,4 @@
-export type CategoryOutput = {
+export type CategoryOutputDto = {
   id: string;
   title: string;
   description: string | null;
