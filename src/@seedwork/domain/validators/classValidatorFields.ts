@@ -15,7 +15,7 @@ export default abstract class ClassValidatorFields<PropsValidated>
       errors.forEach((error) => {
         const field = error.property;
 
-        this.errors[field] = Object.values(error.constraints)
+        this.errors[field] = Object.values(error.constraints);
       })
     } else {
       this.validatedData = data;

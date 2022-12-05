@@ -1,4 +1,3 @@
-import { timeStamp } from "console";
 import Entity from "../entity/entity";
 import UniqueEntityId from "../valueObjects/uniqueEntityIdVo";
 

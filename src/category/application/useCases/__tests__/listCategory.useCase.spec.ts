@@ -95,7 +95,7 @@ describe("listcategory use case unit tests", () => {
       total: 4,
       currentPage: 1,
       perPage: 2,
-      lastPage: 1,
+      lastPage: 2,
     })
   })
 })

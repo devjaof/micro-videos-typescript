@@ -1,4 +1,3 @@
-
 import { ValidationError } from "class-validator";
 import ValidatorRules from "../validatorRules"
 
@@ -25,9 +24,9 @@ function assertIsInvalid({
   expect(() => {
     const validator = ValidatorRules.values(value, property);
     const method: any = validator[rule];
-    method.apply(validator, params)
+    method.apply(validator, params);
 
-  }).toThrow(error);
+  }).toThrow(error as any);
 }
 
 function assertIsValid({
@@ -42,7 +41,7 @@ function assertIsValid({
     const method: any = validator[rule];
     method.apply(validator, params)
 
-  }).not.toThrow(error);
+  }).not.toThrow(error as any);
 }
 
 describe('ValidatorRules Unit Tests', () => {
@@ -68,7 +67,7 @@ describe('ValidatorRules Unit Tests', () => {
         value: item.value,
         property: item.property,
         rule: "required",
-        error: new ValidationError()
+        error: "The Category is required." as any
       })
     })
   })
@@ -86,7 +85,7 @@ describe('ValidatorRules Unit Tests', () => {
         value: item.value,
         property: item.property,
         rule: "string",
-        error: new ValidationError()
+        error: "The Category must be a string." as any
       })
     })
   })
@@ -101,7 +100,7 @@ describe('ValidatorRules Unit Tests', () => {
         value: item.value,
         property: item.property,
         rule: "maxLength",
-        error: new ValidationError(),
+        error: "The Category is over the max-length." as any,
         params: [10]
       })
     })
@@ -119,7 +118,7 @@ describe('ValidatorRules Unit Tests', () => {
         value: item.value,
         property: item.property,
         rule: "boolean",
-        error: new ValidationError()
+        error: "The active must be a boolean." as any
       })
     })
   })

@@ -61,7 +61,7 @@ export abstract class InMemorySearchableRepository<E extends Entity>
 
       return new SearchResult({
         items: paginatedItems,
-        total: filteredItems.length,
+        total: this.items.length,
         currentPage: props.page,
         perPage: props.perPage,
         sortField: props.sortField,
@@ -97,8 +97,8 @@ export abstract class InMemorySearchableRepository<E extends Entity>
 
     protected async applyPaginate(
       items: E[], 
-      page: SearchParams['page'], 
-      perPage: SearchParams['perPage']
+      page: SearchParams<number>['page'], 
+      perPage: SearchParams<number>['perPage']
       ): 
       Promise<E[]>{
         const start = (page - 1) * perPage; // 1 * 15 = 15

@@ -117,8 +117,6 @@ describe('InMemorySearchableRepository unit tests', () => {
       const entity = new StubEntity({title: "a", price: 8});
       repository.items = Array(16).fill(entity);
 
-      console.log(repository);
-
       const result = await repository.search(new SearchParams());
       expect(result).toStrictEqual(new SearchResult({
         items: Array(15).fill(entity),

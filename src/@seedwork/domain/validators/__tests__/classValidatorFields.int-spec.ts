@@ -43,7 +43,7 @@ describe('ClassValidatorFields integration tests', () => {
   it('should be valid', () => {
     const validator = new StubClassValidator();
 
-    expect(validator.validate({name: 'Frip Frep iogurte', price: 22})).toBeTruthy();
-    expect(validator.validatedData).toStrictEqual(new StubRules({name: 'Frip Frep iogurte', price: 22}));
+    expect(validator.validate({title: 'Frip Frep iogurte', price: 22})).toBeTruthy();
+    expect(validator.validatedData).toStrictEqual(new StubRules({title: 'Frip Frep iogurte', price: 22}));
   })
 })
