@@ -68,7 +68,7 @@ describe('ValidatorRules Unit Tests', () => {
         value: item.value,
         property: item.property,
         rule: "required",
-        error: new ValidationError(`The ${item.property} is required.`)
+        error: new ValidationError()
       })
     })
   })
@@ -86,7 +86,7 @@ describe('ValidatorRules Unit Tests', () => {
         value: item.value,
         property: item.property,
         rule: "string",
-        error: new ValidationError(`The ${item.property} must be a string.`)
+        error: new ValidationError()
       })
     })
   })
@@ -101,7 +101,7 @@ describe('ValidatorRules Unit Tests', () => {
         value: item.value,
         property: item.property,
         rule: "maxLength",
-        error: new ValidationError(`The ${item.property} is over the max-length.`),
+        error: new ValidationError(),
         params: [10]
       })
     })
@@ -119,7 +119,7 @@ describe('ValidatorRules Unit Tests', () => {
         value: item.value,
         property: item.property,
         rule: "boolean",
-        error: new ValidationError(`The ${item.property} must be a boolean.`)
+        error: new ValidationError()
       })
     })
   })
@@ -135,7 +135,7 @@ describe('ValidatorRules Unit Tests', () => {
         value: item.value,
         property: item.property,
         rule: "required",
-        error: new ValidationError(`The ${item.property} is required.`)
+        error: new ValidationError()
       })
     })
   })
@@ -152,7 +152,7 @@ describe('ValidatorRules Unit Tests', () => {
         value: item.value,
         property: item.property,
         rule: "string",
-        error: new ValidationError(`The ${item.property} must be a string.`)
+        error: new ValidationError()
       })
     })
   })
@@ -169,7 +169,7 @@ describe('ValidatorRules Unit Tests', () => {
         value: item.value,
         property: item.property,
         rule: "maxLength",
-        error: new ValidationError(`The ${item.property} is over the maxLength of 10.`),
+        error: new ValidationError(),
         params: [10]
       })
     })
@@ -187,7 +187,7 @@ describe('ValidatorRules Unit Tests', () => {
         value: item.value,
         property: item.property,
         rule: "boolean",
-        error: new ValidationError(`The ${item.property} must be a boolean`),
+        error: new ValidationError(),
       })
     })
   })

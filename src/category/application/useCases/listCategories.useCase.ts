@@ -1,6 +1,5 @@
-import { PaginationOutputDto, PaginationOutputMapper } from "@seedwork/application/dtos/paginationOutput";
+import { PaginationOutput, PaginationOutputMapper } from "../../../@seedwork/application/dtos/paginationOutput";
 import { SearchInputDto } from "@seedwork/application/dtos/searchInput";
-import { SearchResult } from "@seedwork/domain/repository/repositoryContracts";
 import UseCaseInterface from "../../../@seedwork/application/useCase";
 import CategoryRepository from "../../domain/repository/category.repository";
 import { CategoryOutput, CategoryOutputMapper } from "../dtos/categoryOutput";
@@ -10,7 +9,7 @@ import { CategoryOutput, CategoryOutputMapper } from "../dtos/categoryOutput";
 // caso de uso seja dependente do domínio
 type Input = SearchInputDto;
 
-type Output = PaginationOutputDto<CategoryOutput>;
+type Output = PaginationOutput<CategoryOutput>;
 
 export default class ListCategoriesUseCase 
   implements UseCaseInterface<Input, Output>{
@@ -28,7 +27,7 @@ export default class ListCategoriesUseCase
   private toOutput(searchResult: CategoryRepository.SearchResult): Output {
     return {
       items: searchResult.items.map((item) => CategoryOutputMapper.toOutput(item)),
-      ...PaginationOutputMapper.toPaginationOutput(searchResult)
+      ...PaginationOutputMapper.toOutput(searchResult)
     }
   }
 }

@@ -1,6 +1,6 @@
 import { SearchResult } from "@seedwork/domain/repository/repositoryContracts"
 
-export type PaginationOutputDto<Items = any> = {
+export type PaginationOutput<Items = any> = {
   items: Items[],
   total: number,
   currentPage: number,
@@ -10,7 +10,7 @@ export type PaginationOutputDto<Items = any> = {
 
 export class PaginationOutputMapper {
   static toOutput(result: SearchResult): 
-    Omit<PaginationOutputDto, "items"> {
+    Omit<PaginationOutput, "items"> {
     return {
       total: result.total,
       currentPage: result.currentPage,
