@@ -2,9 +2,8 @@
 - Criação do container de desenvolvimento em cloud - OK
 - Aplicação Node com Typescript - OK
 - Entidade core e testes - OK
-- Repository, UseCase - fazendo
-- Integração do Core com o Nest.Js
-- API Rest
+- Repository, UseCase - OK
+- Integração do Core com o Nest.Js - fazendo
 - DB - Sequelize
 - CategoriesModule
 - Testes end-to-end
