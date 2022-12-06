@@ -1,5 +1,5 @@
-import ValidatorFieldInterface from "../../../@seedwork/domain/validators/validatorFieldsInterface";
-import ClassValidatorFields from "../../../@seedwork/domain/validators/classValidatorFields";
+import ValidatorFieldInterface from "@seedwork/domain/validators/validatorFieldsInterface";
+import ClassValidatorFields from "@seedwork/domain/validators/classValidatorFields";
 import { CategoryProperties } from "../entities/category";
 import { IsBoolean, IsDate, IsNotEmpty, IsOptional, IsString, MaxLength } from "class-validator";
 

@@ -1,4 +1,4 @@
-import UseCaseInterface from "../../../@seedwork/application/useCase";
+import UseCaseInterface from "@seedwork/application/useCase";
 import CategoryRepository from "../../domain/repository/category.repository";
 import { CategoryOutput, CategoryOutputMapper } from "../dtos/categoryOutput";
 

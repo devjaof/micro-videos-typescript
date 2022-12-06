@@ -3,7 +3,7 @@
 // será alterado caso a forma de criar uma categoria tbm seja alterada.
 // não fazer extends em casos de uso, isso quebra o single responsability
 
-import UseCaseInterface from "../../../@seedwork/application/useCase";
+import UseCaseInterface from "@seedwork/application/useCase";
 import CategoryRepository from "../../domain/repository/category.repository";
 import { CategoryOutput, CategoryOutputMapper } from "../dtos/categoryOutput";
 

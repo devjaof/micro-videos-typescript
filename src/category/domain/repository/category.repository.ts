@@ -1,9 +1,8 @@
 import {
-  RepositoryInterface, 
   SearchableRepositoryInterface, 
   SearchParams as defaultSearchParams, 
   SearchResult as defaultSearchResult
-} from  '../../../@seedwork/domain/repository/repositoryContracts';
+} from  '@seedwork/domain/repository/repositoryContracts';
 import { Category } from '../entities/category';
 
 export namespace CategoryRepository{  

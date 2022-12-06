@@ -1,4 +1,4 @@
-import { InMemorySearchableRepository } from "../../../@seedwork/domain/repository/inMemory.repository";
+import { InMemorySearchableRepository } from "@seedwork/domain/repository/inMemory.repository";
 import { Category } from "category/domain/entities/category";
 import CategoryRepository from "../../domain/repository/category.repository";
 

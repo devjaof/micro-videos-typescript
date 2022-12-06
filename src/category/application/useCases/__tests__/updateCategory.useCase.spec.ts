@@ -1,5 +1,5 @@
 import { Category } from "../../../domain/entities/category";
-import NotFoundError from "../../../../@seedwork/domain/errors/notFound.error";
+import NotFoundError from "@seedwork/domain/errors/notFound.error";
 import CategoryInMemoryRepository from "../../../infra/repository/categoryInMemory.repository";
 import UpdateCategoryUseCase from "../updateCategory.useCase"
 
