@@ -1,5 +1,5 @@
 import { Category, CategoryProperties } from '../category';
-import UniqueEntityId from '@seedwork/domain/valueObjects/uniqueEntityIdVo';
+import UniqueEntityId from '#seedwork/domain/valueObjects/uniqueEntityIdVo';
 
 describe("Category Tests", () => {
   beforeEach(() => {

@@ -9,7 +9,7 @@
     "strictNullChecks": false,
     "skipLibCheck": true,
     "paths": {
-      "@seedwork/*":[
+      "#seedwork/*": [
         "./@seedwork/*"
       ]
     },
