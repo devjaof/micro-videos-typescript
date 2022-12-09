@@ -1,6 +1,6 @@
-import UseCaseInterface from "@seedwork/application/useCase";
-import CategoryRepository from "../../domain/repository/category.repository";
-import { CategoryOutput, CategoryOutputMapper } from "../dtos/categoryOutput";
+import UseCaseInterface from "#seedwork/application/useCase";
+import CategoryRepository from "#category/domain/repository/category.repository";
+import { CategoryOutput, CategoryOutputMapper } from "#category/application/dtos/categoryOutput";
 
 type Input = {
   id: string,

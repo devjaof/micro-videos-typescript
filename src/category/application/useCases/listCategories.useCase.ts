@@ -1,8 +1,8 @@
-import { PaginationOutput, PaginationOutputMapper } from "@seedwork/application/dtos/paginationOutput";
-import { SearchInputDto } from "@seedwork/application/dtos/searchInput";
-import UseCaseInterface from "@seedwork/application/useCase";
-import CategoryRepository from "../../domain/repository/category.repository";
-import { CategoryOutput, CategoryOutputMapper } from "../dtos/categoryOutput";
+import { PaginationOutput, PaginationOutputMapper } from "#seedwork/application/dtos/paginationOutput";
+import { SearchInputDto } from "#seedwork/application/dtos/searchInput";
+import UseCaseInterface from "#seedwork/application/useCase";
+import CategoryRepository from "#category/domain/repository/category.repository";
+import { CategoryOutput, CategoryOutputMapper } from "#category/application/dtos/categoryOutput";
 
 // DRY - isto quebra o conceito dont repeat yourself? sim, mas neste caso faz-se
 // necessário esta quebra, já que o uso direto do searchProps faria com que meu

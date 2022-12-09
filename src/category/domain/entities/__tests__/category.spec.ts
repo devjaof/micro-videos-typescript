@@ -1,4 +1,4 @@
-import { Category, CategoryProperties } from '../category';
+import { Category, CategoryProperties } from '#category/domain/entities/category';
 import UniqueEntityId from '#seedwork/domain/valueObjects/uniqueEntityIdVo';
 
 describe("Category Tests", () => {

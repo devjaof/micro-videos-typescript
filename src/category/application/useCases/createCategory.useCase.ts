@@ -3,10 +3,10 @@
 // será alterado caso a forma de criar uma categoria tbm seja alterada.
 // não fazer extends em casos de uso, isso quebra o single responsability
 
-import UseCaseInterface from "@seedwork/application/useCase";
-import { Category } from "../../domain/entities/category";
-import CategoryRepository from "../../domain/repository/category.repository";
-import { CategoryOutput, CategoryOutputMapper } from "../dtos/categoryOutput";
+import UseCaseInterface from "#seedwork/application/useCase";
+import { Category } from "#category/domain/entities/category";
+import CategoryRepository from "#category/domain/repository/category.repository";
+import { CategoryOutput, CategoryOutputMapper } from "#category/application/dtos/categoryOutput";
 
 // DTO - Data Transfer Objects
 type Input = {

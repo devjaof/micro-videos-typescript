@@ -1,4 +1,4 @@
-import { SearchResult } from "@seedwork/domain/repository/repositoryContracts"
+import { SearchResult } from "#seedwork/domain/repository/repositoryContracts"
 
 export type PaginationOutput<Items = any> = {
   items: Items[],

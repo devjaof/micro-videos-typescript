@@ -1,5 +1,5 @@
-import UseCaseInterface from "../../../@seedwork/application/useCase";
-import CategoryRepository from "../../domain/repository/category.repository";
+import UseCaseInterface from "#seedwork/application/useCase";
+import CategoryRepository from "#category/domain/repository/category.repository";
 
 type Input = {
   id: string;

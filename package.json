@@ -4,9 +4,8 @@
   "description": "admin do catálogo de videos",
   "main": "index.js",
   "imports": {
-    "#seedwork/*": {
-      "require": "./dist/@seedwork/*.js"
-    }
+    "#seedwork/*": "./dist/@seedwork/*.js",
+    "#category/*": "./dist/category/*.js"
   },
   "scripts": {
     "ts-node": "ts-node",

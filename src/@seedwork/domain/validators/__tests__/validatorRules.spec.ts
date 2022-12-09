@@ -1,5 +1,5 @@
 import { ValidationError } from "class-validator";
-import ValidatorRules from "../validatorRules"
+import ValidatorRules from "#seedwork/domain/validators/validatorRules"
 
 type Values = {
   value: any;

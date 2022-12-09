@@ -1,7 +1,7 @@
-import { Category } from "../../../domain/entities/category";
-import NotFoundError from "@seedwork/domain/errors/notFound.error";
-import CategoryInMemoryRepository from "../../../infra/repository/categoryInMemory.repository";
-import UpdateCategoryUseCase from "../updateCategory.useCase"
+import { Category } from "#category/domain/entities/category";
+import NotFoundError from "#seedwork/domain/errors/notFound.error";
+import CategoryInMemoryRepository from "#category/infra/repository/categoryInMemory.repository";
+import UpdateCategoryUseCase from "#category/application/useCases/updateCategory.useCase"
 
 describe("createcategory use case unit tests", () => {
   let updateUseCase: UpdateCategoryUseCase;

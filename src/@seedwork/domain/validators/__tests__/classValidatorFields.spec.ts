@@ -1,4 +1,4 @@
-import ClassValidatorFields from "../classValidatorFields";
+import ClassValidatorFields from "#seedwork/domain/validators/classValidatorFields";
 import * as libClassValidator from 'class-validator';
 
 class StubClassValidator extends ClassValidatorFields<{field: string}> {

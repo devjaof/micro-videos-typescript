@@ -1,5 +1,5 @@
 // VO -> Value Object
-import InvalidUuidError from '../errors/invalidUuid.error';
+import InvalidUuidError from '#seedwork/domain/errors/invalidUuid.error';
 import { v4 as uuid, validate as uuidValidate } from 'uuid';
 import ValueObject from './valueObject';
 

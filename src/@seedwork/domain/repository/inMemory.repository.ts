@@ -1,6 +1,6 @@
-import Entity from "../entity/entity";
-import NotFoundError from "../errors/notFound.error";
-import uniqueEntityIdVo from "../valueObjects/uniqueEntityIdVo";
+import Entity from "#seedwork/domain/entity/entity";
+import NotFoundError from "#seedwork/domain/errors/notFound.error";
+import uniqueEntityIdVo from "#seedwork/domain/valueObjects/uniqueEntityIdVo";
 import { RepositoryInterface, SearchableRepositoryInterface, SearchParams, SearchResult } from "./repositoryContracts";
 
 export default abstract class InMemoryRepository<E extends Entity> implements RepositoryInterface<E>{
