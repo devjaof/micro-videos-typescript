@@ -12,7 +12,7 @@
 
 ### Ferramentas e técnicas
 - CleanArch
-- TDD
+- Domain Driven Development
 - Typescript
 - Jest
 - Nest.js
