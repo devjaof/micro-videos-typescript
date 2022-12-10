@@ -13,7 +13,8 @@
 ### Ferramentas e técnicas
 - CleanArch
 - Domain Driven Development
-- Typescript
+- Cobertura completa de testes
 - Jest
+- Typescript
 - Nest.js
 - RabbitMQ e encoder de vídeo
