@@ -28,7 +28,8 @@
 		"eamodio.gitlens",
 		"vivaxy.vscode-conventional-commits",
 		"donjayamanne.githistory",
-		"firsttris.vscode-jest-runner"
+		"firsttris.vscode-jest-runner",
+		"humao.rest-client"
 	]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
