@@ -7,10 +7,15 @@
     "#seedwork/*": "./dist/@seedwork/*.js",
     "#category/*": "./dist/category/*.js"
   },
+  "exports": {
+    "./category/domain": "./dist/category/domain/index.js"
+  },
   "scripts": {
     "ts-node": "ts-node",
     "tsc": "tsc",
     "tsc:check": "npm run tsc -- --noEmit",
+    "build": "tsc -b ./tsconfig.json",
+    "build:w": "tsc -b ./tsconfig.json -w",
     "clean-tsc": "rm ./tsconfig.tsbuildinfo",
     "test": "jest",
     "test:cov": "npm run test -- --coverage",

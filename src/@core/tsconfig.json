@@ -1,13 +1,7 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "incremental": true,
-    "target": "es2017",
-    "experimentalDecorators": true,         
-    "module": "commonjs",
     "baseUrl": "./src",
-    "strict": true,
-    "strictNullChecks": false,
-    "skipLibCheck": true,
     "paths": {
       "#seedwork/*": [
         "./@seedwork/*"
@@ -16,8 +10,7 @@
         "./category/*"
       ]
     },
-    "outDir": "./dist",
-    "declaration": true
+    "outDir": "./dist"
   },
   "include": ["src/"]
 }
