@@ -5,14 +5,14 @@ import DeleteCategoryUseCase from "#category/application/useCases/deleteCategory
 import GetCategoryUseCase from "#category/application/useCases/getCategory.useCase";
 
 describe("DeleteCategoryUseCase unit tests", () => {
-  let deleteUseCase: DeleteCategoryUseCase;
-  let getUseCase: GetCategoryUseCase;
+  let deleteUseCase: DeleteCategoryUseCase.UseCase;
+  let getUseCase: GetCategoryUseCase.UseCase;
   let repository: CategoryInMemoryRepository;
 
   beforeEach(() => {
     repository = new CategoryInMemoryRepository();
-    deleteUseCase = new DeleteCategoryUseCase(repository);
-    getUseCase = new GetCategoryUseCase(repository);
+    deleteUseCase = new DeleteCategoryUseCase.UseCase(repository);
+    getUseCase = new GetCategoryUseCase.UseCase(repository);
   })
 
   it('should throw error when category not found', async () => {

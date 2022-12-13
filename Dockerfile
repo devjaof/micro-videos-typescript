@@ -24,4 +24,4 @@ WORKDIR /home/node/app
 #     -p https://github.com/zsh-users/zsh-autosuggestions \
 #     -p https://github.com/zsh-users/zsh-completions
 
-CMD ["sh", "-c", "npm install && tail -f /dev/null"]
+CMD ["tail", "-f", "/dev/null"]
