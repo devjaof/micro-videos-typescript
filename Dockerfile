@@ -1,10 +1,12 @@
-FROM node:14.15.4-slim
+FROM node:14.17.0-slim
 
 RUN apt update && apt install -y --no-install-recommends \
     git \
     curl \
     wget \
     zsh 
+
+RUN npm install -g @nestjs/cli@8.2.5 npm@8.5.0
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     openssh-client 

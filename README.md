@@ -17,4 +17,5 @@
 - Jest
 - Typescript
 - Nest.js
+- Monorepo
 - RabbitMQ e encoder de vídeo
