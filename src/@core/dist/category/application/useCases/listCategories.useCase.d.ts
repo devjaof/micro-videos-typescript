@@ -3,12 +3,15 @@ import { SearchInputDto } from "#seedwork/application/dtos/searchInput";
 import UseCaseInterface from "#seedwork/application/useCase";
 import CategoryRepository from "#category/domain/repository/category.repository";
 import { CategoryOutput } from "#category/application/dtos/categoryOutput";
-type Input = SearchInputDto;
-type Output = PaginationOutput<CategoryOutput>;
-export default class ListCategoriesUseCase implements UseCaseInterface<Input, Output> {
-    private categoryRepo;
-    constructor(categoryRepo: CategoryRepository.Repository);
-    execute(input: Input): Promise<Output>;
-    private toOutput;
+export declare namespace ListCategoriesUseCase {
+    type Input = SearchInputDto;
+    type Output = PaginationOutput<CategoryOutput>;
+    export class UseCase implements UseCaseInterface<Input, Output> {
+        private categoryRepo;
+        constructor(categoryRepo: CategoryRepository.Repository);
+        execute(input: Input): Promise<Output>;
+        private toOutput;
+    }
+    export {};
 }
-export {};
+export default ListCategoriesUseCase;

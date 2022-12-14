@@ -9,7 +9,7 @@ describe("createcategory use case unit tests", () => {
     let repository;
     beforeEach(() => {
         repository = new categoryInMemory_repository_1.default();
-        updateUseCase = new updateCategory_useCase_1.default(repository);
+        updateUseCase = new updateCategory_useCase_1.default.UseCase(repository);
     });
     it('should throw error when category not found', async () => {
         expect(async () => { await updateUseCase.execute({ id: 'fake id', title: 'fake title' }); })

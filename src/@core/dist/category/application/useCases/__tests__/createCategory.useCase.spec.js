@@ -7,7 +7,7 @@ describe("createcategory use case unit tests", () => {
     let repository;
     beforeEach(() => {
         repository = new categoryInMemory_repository_1.default();
-        useCase = new createCategory_useCase_1.default(repository);
+        useCase = new createCategory_useCase_1.default.UseCase(repository);
     });
     it('should create a category', async () => {
         const spyInsert = jest.spyOn(repository, 'insert');

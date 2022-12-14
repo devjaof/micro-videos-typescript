@@ -4,7 +4,8 @@ RUN apt update && apt install -y --no-install-recommends \
     git \
     curl \
     wget \
-    zsh 
+    zsh \
+    procps
 
 RUN npm install -g @nestjs/cli@8.2.5 npm@8.5.0
 

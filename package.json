@@ -14,7 +14,8 @@
     "./src/nestjs"
   ],
   "scripts": {
-    "start:dev": "npm run start:dev -w nestjs"
+    "prestart:dev": "npm run build -w @jfr/micro-videos",
+    "start:dev": "npm run build:w -w @jfr/micro-videos & npm run start:dev -w nestjs"
   },
   "repository": {
     "type": "git",

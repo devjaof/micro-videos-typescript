@@ -9,7 +9,7 @@ describe("listcategory use case unit tests", () => {
     let repository;
     beforeEach(() => {
         repository = new categoryInMemory_repository_1.default();
-        useCase = new listCategories_useCase_1.default(repository);
+        useCase = new listCategories_useCase_1.default.UseCase(repository);
     });
     test('toOutput method', () => {
         let result = new category_repository_1.default.SearchResult({

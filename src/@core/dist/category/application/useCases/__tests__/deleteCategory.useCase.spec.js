@@ -11,8 +11,8 @@ describe("DeleteCategoryUseCase unit tests", () => {
     let repository;
     beforeEach(() => {
         repository = new categoryInMemory_repository_1.default();
-        deleteUseCase = new deleteCategory_useCase_1.default(repository);
-        getUseCase = new getCategory_useCase_1.default(repository);
+        deleteUseCase = new deleteCategory_useCase_1.default.UseCase(repository);
+        getUseCase = new getCategory_useCase_1.default.UseCase(repository);
     });
     it('should throw error when category not found', async () => {
         expect(async () => { await deleteUseCase.execute({ id: 'fake id' }); })
