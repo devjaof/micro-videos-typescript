@@ -2,7 +2,7 @@ import { InMemorySearchableRepository } from "#seedwork/domain/repository/inMemo
 import { Category } from "#category/domain/entities/category";
 import CategoryRepository from "#category/domain/repository/category.repository";
 
-export default class CategoryInMemoryRepository 
+export class CategoryInMemoryRepository 
   extends InMemorySearchableRepository<Category> 
   implements CategoryRepository.Repository{
     protected async applyFilter(items: Category[], filter: CategoryRepository.Filter): Promise<Category[]> {
@@ -23,3 +23,5 @@ export default class CategoryInMemoryRepository
       return !sort ? super.applySort(items, sortField, 'desc') : super.applySort(items, sortField, sort);
     }
 }
+
+export default CategoryInMemoryRepository;
