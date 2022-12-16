@@ -3,12 +3,12 @@ import CategoryRepository from "#category/domain/repository/category.repository"
 import { CategoryOutput, CategoryOutputMapper } from "#category/application/dtos/categoryOutput";
 
 export namespace UpdateCategoryUseCase {
-  type Input = {
+  export type Input = {
     id: string,
     title: string;
     description?: string;
     active?: boolean;
-  } 
+  }
   
   export class UseCase 
     implements UseCaseInterface<Input, CategoryOutput> {

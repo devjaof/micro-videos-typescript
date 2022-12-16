@@ -1,52 +1,51 @@
-import { CreateCategoryUseCase } from '@jfr/micro-videos/category/application';
-import { ListCategoriesUseCase } from '@jfr/micro-videos/category/application';
 import {
   Controller,
   Get,
   Post,
   Body,
-  Patch,
+  Put,
   Param,
   Delete,
+  Inject,
+  HttpCode,
+  Query,
 } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
+import { SearchCategoryDto } from './dto/search-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 
 @Controller('categories')
 export class CategoriesController {
-  constructor(
-    private readonly categoriesService: CategoriesService,
-    private createUseCase: CreateCategoryUseCase.UseCase,
-    private listUseCase: ListCategoriesUseCase.UseCase,
-  ) {}
+  @Inject(CategoriesService)
+  private readonly categoriesService: CategoriesService;
 
   @Post()
   create(@Body() createCategoryDto: CreateCategoryDto) {
-    return this.createUseCase.execute({ title: 'Movies' });
-    // return this.categoriesService.create(createCategoryDto);
+    return this.categoriesService.create(createCategoryDto);
   }
 
   @Get()
-  findAll() {
-    return this.listUseCase.execute({});
+  search(@Query() SearchParams: SearchCategoryDto) {
+    return this.categoriesService.search(SearchParams);
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.categoriesService.findOne(+id);
+    return this.categoriesService.findOne({ id });
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(
     @Param('id') id: string,
     @Body() updateCategoryDto: UpdateCategoryDto,
   ) {
-    return this.categoriesService.update(+id, updateCategoryDto);
+    return this.categoriesService.update({ id, ...updateCategoryDto });
   }
 
+  @HttpCode(204)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.categoriesService.remove(+id);
+    return this.categoriesService.remove({ id });
   }
 }

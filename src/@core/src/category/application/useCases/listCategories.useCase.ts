@@ -8,9 +8,9 @@ export namespace ListCategoriesUseCase {
   // DRY - isto quebra o conceito dont repeat yourself? sim, mas neste caso faz-se
   // necessário esta quebra, já que o uso direto do searchProps faria com que meu
   // caso de uso seja dependente do domínio
-  type Input = SearchInputDto;
+  export type Input = SearchInputDto;
 
-  type Output = PaginationOutput<CategoryOutput>;
+  export type Output = PaginationOutput<CategoryOutput>;
 
   export class UseCase 
     implements UseCaseInterface<Input, Output>{

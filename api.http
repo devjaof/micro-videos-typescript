@@ -1,5 +1,21 @@
 GET http://localhost:3000/categories
 
 ###
+GET http://localhost:3000/categories/9b03976e-4ddb-4dcf-b8b1-ffed601ec70a
+
+###
 POST http://localhost:3000/categories
- 
+Content-Type: application/json
+
+{
+  "title": "testing"
+}
+
+###
+PUT http://localhost:3000/categories/9b03976e-4ddb-4dcf-b8b1-ffed601ec70a
+Content-Type: application/json
+
+{
+  "title": "oie",
+  "description": "eita lele"
+}

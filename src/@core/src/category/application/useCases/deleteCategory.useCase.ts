@@ -2,11 +2,11 @@ import UseCaseInterface from "#seedwork/application/useCase";
 import CategoryRepository from "#category/domain/repository/category.repository";
 
 export namespace DeleteCategoryUseCase {
-  type Input = {
+  export type Input = {
     id: string;
   }
 
-  type Output = void;
+  export type Output = void;
 
   export class UseCase implements UseCaseInterface<Input, Output> {
     constructor(private categoryRepository: CategoryRepository.Repository) {}

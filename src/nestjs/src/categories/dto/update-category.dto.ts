@@ -1,4 +1,8 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateCategoryDto } from './create-category.dto';
+import { UpdateCategoryUseCase } from '@jfr/micro-videos/category/application';
 
-export class UpdateCategoryDto extends PartialType(CreateCategoryDto) {}
+export class UpdateCategoryDto implements UpdateCategoryUseCase.Input {
+  id: string;
+  title: string;
+  description?: string;
+  active?: boolean;
+}

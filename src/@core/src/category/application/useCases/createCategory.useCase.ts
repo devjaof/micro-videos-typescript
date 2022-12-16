@@ -9,13 +9,13 @@ import CategoryRepository from "#category/domain/repository/category.repository"
 import { CategoryOutput, CategoryOutputMapper } from "#category/application/dtos/categoryOutput";
 
 export namespace CreateCategoryUseCase {
-  type Input = {
+  export type Input = {
     title: string;
     description?: string;
     active?: boolean;
   }
 
-  type Output = CategoryOutput;
+  export type Output = CategoryOutput;
   
   export class UseCase 
   implements UseCaseInterface<Input, Output> {

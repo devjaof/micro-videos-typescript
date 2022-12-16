@@ -8,17 +8,19 @@ import CategoryRepository from "#category/domain/repository/category.repository"
 import { CategoryOutput, CategoryOutputMapper } from "#category/application/dtos/categoryOutput";
 
 export namespace GetCategoryUseCase {
-  type Input = {
+  export type Input = {
     id: string;
   } 
+
+  export type Output = CategoryOutput;
   
   export class UseCase 
-    implements UseCaseInterface<Input, CategoryOutput>{
+    implements UseCaseInterface<Input, Output>{
     // dependency injection & dependency inversion
      constructor(private categoryRepo: CategoryRepository.Repository) {
      }
   
-    async execute(input: Input): Promise<CategoryOutput> {
+    async execute(input: Input): Promise<Output> {
       const entity = await this.categoryRepo.findById(input.id);
   
       return CategoryOutputMapper.toOutput(entity);
