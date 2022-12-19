@@ -8,8 +8,8 @@
     "#category/*": "./dist/category/*.js"
   },
   "exports": {
-    "./@seedowork/application": "./dist/@seedowork/application/index.js",
-    "./@seedowork/domain": "./dist/@seedowork/domain/index.js",
+    "./@seedwork/application": "./dist/@seedwork/application/index.js",
+    "./@seedwork/domain": "./dist/@seedwork/domain/index.js",
     "./category/application": "./dist/category/application/index.js",
     "./category/domain": "./dist/category/domain/index.js",
     "./category/infra": "./dist/category/infra/index.js"
