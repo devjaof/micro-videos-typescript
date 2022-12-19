@@ -2,7 +2,7 @@
   Este projeto tem como objetivo ser a API de controle do admin em um serviço de streaming de videos. <br>
   Feito com base no curso de NestJs da plataforma FullCycle que foi possibilitado pela Viasoft - Voors.
 
-## Aprendizados
+### Aprendizados
 - Desenvolvimento de aplicações em Cloud;
 - Clear Archtecture e DDD na prática;
 - Repository In Memory;
