@@ -1,4 +1,4 @@
-import UseCaseInterface from "#seedwork/application/useCase";
+import { default as DefaultUseCase } from "#seedwork/application/useCase";
 import CategoryRepository from "#category/domain/repository/category.repository";
 
 export namespace DeleteCategoryUseCase {
@@ -8,7 +8,7 @@ export namespace DeleteCategoryUseCase {
 
   export type Output = void;
 
-  export class UseCase implements UseCaseInterface<Input, Output> {
+  export class UseCase implements DefaultUseCase<Input, Output> {
     constructor(private categoryRepository: CategoryRepository.Repository) {}
   
     async execute(input: Input): Promise<Output> {

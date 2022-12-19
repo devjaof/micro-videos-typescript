@@ -1,4 +1,4 @@
-import UseCaseInterface from "#seedwork/application/useCase";
+import { default as DefaultUseCase } from "#seedwork/application/useCase";
 import CategoryRepository from "#category/domain/repository/category.repository";
 import { CategoryOutput, CategoryOutputMapper } from "#category/application/dtos/categoryOutput";
 
@@ -11,7 +11,7 @@ export namespace UpdateCategoryUseCase {
   }
   
   export class UseCase 
-    implements UseCaseInterface<Input, CategoryOutput> {
+    implements DefaultUseCase<Input, CategoryOutput> {
      constructor(private categoryRepo: CategoryRepository.Repository) {
      }
   
