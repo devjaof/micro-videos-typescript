@@ -11,12 +11,16 @@ import {
 export class CategoriesService {
   @Inject(CreateCategoryUseCase.UseCase)
   private createUseCase: CreateCategoryUseCase.UseCase;
+
   @Inject(ListCategoriesUseCase.UseCase)
   private listUseCase: ListCategoriesUseCase.UseCase;
+
   @Inject(GetCategoryUseCase.UseCase)
   private getUseCase: GetCategoryUseCase.UseCase;
+
   @Inject(UpdateCategoryUseCase.UseCase)
   private updateUseCase: UpdateCategoryUseCase.UseCase;
+
   @Inject(DeleteCategoryUseCase.UseCase)
   private deleteUseCase: DeleteCategoryUseCase.UseCase;
 

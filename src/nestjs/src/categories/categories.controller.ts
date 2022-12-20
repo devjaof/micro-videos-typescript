@@ -22,6 +22,9 @@ export class CategoriesController {
 
   @Post()
   create(@Body() createCategoryDto: CreateCategoryDto) {
+    console.log('dto', createCategoryDto);
+    console.log('categoriesService', this.categoriesService);
+
     return this.categoriesService.create(createCategoryDto);
   }
 
