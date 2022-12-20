@@ -1,7 +1,7 @@
 GET http://localhost:3000/categories
 
 ###
-GET http://localhost:3000/categories/9b03976e-4ddb-4dcf-b8b1-ffed601ec70a
+GET http://localhost:3000/categories/673ace89-dd17-44c3-ab14-9fe105516380
 
 ###
 POST http://localhost:3000/categories
@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3000/categories/9b03976e-4ddb-4dcf-b8b1-ffed601ec70a
+PUT http://localhost:3000/categories/673ace89-dd17-44c3-ab14-9fe105516380
 Content-Type: application/json
 
 {
