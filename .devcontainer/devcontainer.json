@@ -20,7 +20,7 @@
 	"workspaceFolder": "/home/node/app",
 
 	"settings": {
-		"terminal.integrated.defaultProfile.linux": "bash"
+		"terminal.integrated.defaultProfile.linux": "zsh"
 	},
 
 	"extensions": [

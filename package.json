@@ -3,19 +3,13 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-    "class-validator": "^0.13.2",
-    "lodash": "^4.17.21",
-    "ttypescript": "^1.5.13",
-    "typescript-transform-paths": "^3.4.4"
-  },
   "workspaces": [
     "./src/@core",
     "./src/nestjs"
   ],
   "scripts": {
-    "test:@core": "npm run test -w @jfr/micro-videos",
-    "test:nestjs": "npm run test -w nestjs",
+    "test": "jest",
+    "test:cov": "jest --coverage",
     "prestart:dev": "npm run build -w @jfr/micro-videos",
     "start:dev": "npm run build:w -w @jfr/micro-videos & npm run start:dev -w nestjs"
   },

@@ -10,7 +10,9 @@
         "./category/*"
       ]
     },
-    "outDir": "./dist"
+    "outDir": "./dist",
   },
-  "include": ["src/"]
+  "include": [
+    "./src/"
+  ]
 }

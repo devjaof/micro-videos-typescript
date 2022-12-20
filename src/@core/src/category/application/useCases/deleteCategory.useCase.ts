@@ -1,5 +1,6 @@
-import { default as DefaultUseCase } from "#seedwork/application/useCase";
-import CategoryRepository from "#category/domain/repository/category.repository";
+
+import { CategoryRepository } from "../../domain/repository/category.repository";
+import {default as DefaultUseCase} from "../../../@seedwork/application/useCase";
 
 export namespace DeleteCategoryUseCase {
   export type Input = {

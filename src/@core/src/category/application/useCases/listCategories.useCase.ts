@@ -1,8 +1,12 @@
-import { PaginationOutput, PaginationOutputMapper } from "#seedwork/application/dtos/paginationOutput";
-import { SearchInputDto } from "#seedwork/application/dtos/searchInput";
-import { default as DefaultUseCase } from "#seedwork/application/useCase";
-import CategoryRepository from "#category/domain/repository/category.repository";
-import { CategoryOutput, CategoryOutputMapper } from "#category/application/dtos/categoryOutput";
+
+import { CategoryRepository } from "../../domain/repository/category.repository";
+import { CategoryOutput, CategoryOutputMapper } from "../dtos/categoryOutput";
+import {default as DefaultUseCase} from "../../../@seedwork/application/useCase";
+import { SearchInputDto } from "../../../@seedwork/application/dtos/searchInput";
+import {
+  PaginationOutput,
+  PaginationOutputMapper,
+} from "../../../@seedwork/application/dtos/paginationOutput";
 
 export namespace ListCategoriesUseCase {
   // DRY - isto quebra o conceito dont repeat yourself? sim, mas neste caso faz-se

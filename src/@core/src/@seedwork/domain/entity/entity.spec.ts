@@ -1,4 +1,4 @@
-import UniqueEntityId from "#seedwork/domain/valueObjects/uniqueEntityIdVo";
+import UniqueEntityId from "../valueObjects/uniqueEntityIdVo";
 import Entity from "./entity"
 import { validate } from 'uuid';
 

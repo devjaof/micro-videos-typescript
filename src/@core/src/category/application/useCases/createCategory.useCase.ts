@@ -3,10 +3,10 @@
 // será alterado caso a forma de criar uma categoria tbm seja alterada.
 // não fazer extends em casos de uso, isso quebra o single responsability
 
-import { default as DefaultUseCase } from "#seedwork/application/useCase";
-import { Category } from "#category/domain/entities/category";
-import CategoryRepository from "#category/domain/repository/category.repository";
-import { CategoryOutput, CategoryOutputMapper } from "#category/application/dtos/categoryOutput";
+import { default as DefaultUseCase } from "../../../@seedwork/application/useCase";
+import { Category } from "../../domain/entities/category";
+import { CategoryRepository } from "../../domain/repository/category.repository";
+import { CategoryOutput, CategoryOutputMapper } from "../dtos/categoryOutput";
 
 export namespace CreateCategoryUseCase {
   export type Input = {

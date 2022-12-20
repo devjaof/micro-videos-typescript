@@ -1,5 +1,5 @@
-import Entity from "#seedwork/domain/entity/entity";
-import UniqueEntityId from "#seedwork/domain/valueObjects/uniqueEntityIdVo";
+import Entity from "../entity/entity";
+import UniqueEntityId from "../valueObjects/uniqueEntityIdVo";
 
 export interface RepositoryInterface<E extends Entity> {
   insert(entity: E): Promise<void>;

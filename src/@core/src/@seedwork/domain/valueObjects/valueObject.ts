@@ -1,7 +1,7 @@
 // objetos de valor são sempre imutáveis!
 
-import { deepFreeze } from "#seedwork/domain/utils/object";
-export default abstract class ValueObject<Value = any> {
+import { deepFreeze } from "../utils/object";
+export abstract class ValueObject<Value = any> {
   protected readonly _value: Value;
  
   constructor(value: Value) {
@@ -26,3 +26,5 @@ export default abstract class ValueObject<Value = any> {
     return stringValue === "[object Object]" ? JSON.stringify(this.value) : stringValue;
   }
 }
+
+export default ValueObject;

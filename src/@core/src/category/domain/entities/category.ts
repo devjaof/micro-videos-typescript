@@ -1,7 +1,7 @@
-import { EntityValidationError } from '#seedwork/domain/errors/validation.error';
-import Entity from '#seedwork/domain/entity/entity';
-import UniqueEntityId from '#seedwork/domain/valueObjects/uniqueEntityIdVo';
-import CategoryValidatorFactory from '#category/domain/validators/category.validator';
+import { EntityValidationError } from '../../../@seedwork/domain/errors/validation.error';
+import Entity from '../../../@seedwork/domain/entity/entity';
+import UniqueEntityId from '../../../@seedwork/domain/valueObjects/uniqueEntityIdVo';
+import {CategoryValidatorFactory} from '../validators/category.validator';
 
 export type CategoryProperties = {
  title: string;
@@ -90,3 +90,5 @@ export class Category extends Entity<CategoryProperties> {
     }
   }
 }
+
+export default Category;

@@ -1,9 +1,9 @@
 // como o repository é abstrato há de se criar um Stub
 
-import Entity from "#seedwork/domain/entity/entity";
-import NotFoundError from "#seedwork/domain/errors/notFound.error";
-import UniqueEntityId from "#seedwork/domain/valueObjects/uniqueEntityIdVo";
-import InMemoryRepository from "../inMemory.repository";
+import Entity from "../../entity/entity";
+import NotFoundError from "../../errors/notFound.error";
+import UniqueEntityId from "../../valueObjects/uniqueEntityIdVo";
+import { InMemoryRepository } from "../inMemory.repository";
 
 type StubEntityProps = {
   title: string;

@@ -22,17 +22,17 @@ export class CategoriesController {
 
   @Post()
   create(@Body() createCategoryDto: CreateCategoryDto) {
-    return this.categoriesService.create(createCategoryDto);
+    return 'this.categoriesService.create(createCategoryDto)';
   }
 
   @Get()
   search(@Query() SearchParams: SearchCategoryDto) {
-    return this.categoriesService.search(SearchParams);
+    return 'this.categoriesService.search(SearchParams)';
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.categoriesService.findOne({ id });
+    return 'this.categoriesService.findOne({ id })';
   }
 
   @Put(':id')
@@ -40,12 +40,12 @@ export class CategoriesController {
     @Param('id') id: string,
     @Body() updateCategoryDto: UpdateCategoryDto,
   ) {
-    return this.categoriesService.update({ id, ...updateCategoryDto });
+    return 'this.categoriesService.update({ id, ...updateCategoryDto })';
   }
 
   @HttpCode(204)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.categoriesService.remove({ id });
+    return 'this.categoriesService.remove({ id })';
   }
 }
