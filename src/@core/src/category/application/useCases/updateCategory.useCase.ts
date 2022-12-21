@@ -9,13 +9,15 @@ export namespace UpdateCategoryUseCase {
     description?: string;
     active?: boolean;
   }
+
+  export type Output = CategoryOutput;
   
   export class UseCase 
-    implements DefaultUseCase<Input, CategoryOutput> {
+    implements DefaultUseCase<Input, Output> {
      constructor(private categoryRepo: CategoryRepository.Repository) {
      }
   
-    async execute(input: Input): Promise<CategoryOutput> {
+    async execute(input: Input): Promise<Output> {
       const entity = await this.categoryRepo.findById(input.id);
       entity.update(input.title, input.description);
   

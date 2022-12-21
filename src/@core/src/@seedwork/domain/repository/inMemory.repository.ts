@@ -3,7 +3,8 @@ import NotFoundError from "../errors/notFound.error";
 import uniqueEntityIdVo from "#seedwork/domain/valueObjects/uniqueEntityIdVo";
 import { RepositoryInterface, SearchableRepositoryInterface, SearchParams, SearchResult } from "./repositoryContracts";
 
-export abstract class InMemoryRepository<E extends Entity> implements RepositoryInterface<E>{
+export abstract class InMemoryRepository
+  <E extends Entity> implements RepositoryInterface <E> {
   items: E[] = [];
 
   async insert(entity: E): Promise<void> {
@@ -44,8 +45,8 @@ export abstract class InMemoryRepository<E extends Entity> implements Repository
   }
 }
 
-export abstract class InMemorySearchableRepository<E extends Entity> 
-  extends InMemoryRepository<E>
+export abstract class InMemorySearchableRepository
+  <E extends Entity> extends InMemoryRepository<E>
   implements SearchableRepositoryInterface<E> {
     sortableFields: string[] = []
 
