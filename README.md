@@ -4,7 +4,7 @@
 
 ### Aprendizados
 - Desenvolvimento de aplicações em Cloud;
-- Clear Archtecture e DDD na prática;
+- Clear Architecture e DDD na prática;
 - Repository In Memory;
 - Monorepo e suas peripécias;
 
