@@ -25,6 +25,7 @@ describe('CategoriesController', () => {
       execute: jest.fn().mockReturnValue(mockOutput),
     };
 
+    // @ts-expect-error no need for repo here
     controller['createUseCase'] = mockCreateUseCase;
     const input: CreateCategoryDto = {
       title: 'movie',
@@ -33,6 +34,9 @@ describe('CategoriesController', () => {
     };
 
     const output = await controller.create(input);
+    console.log(output);
+    console.log(mockOutput);
+
     expect(mockCreateUseCase.execute).toHaveBeenCalledWith(input);
     expect(mockOutput).toStrictEqual(output);
   });
@@ -49,6 +53,7 @@ describe('CategoriesController', () => {
       execute: jest.fn().mockReturnValue(mockOutput),
     };
 
+    // @ts-expect-error no need for repo here
     controller['updateUseCase'] = mockUpdateUseCase;
     const input: UpdateCategoryDto = {
       title: 'movie',
@@ -56,14 +61,14 @@ describe('CategoriesController', () => {
       active: true,
     };
 
-    const output = await controller.create(input);
-    expect(mockUpdateUseCase.execute).toHaveBeenCalledWith(input);
+    const id = '258d4d87-c57d-4ec5-81d9-6fbb9fc73929';
+
+    const output = await controller.update(id, input);
+    expect(mockUpdateUseCase.execute).toHaveBeenCalledWith({ id, ...input });
     expect(mockOutput).toStrictEqual(output);
   });
 
-  it('should delete a category', () => {
-    expect(controller).toBeDefined();
-  });
+  it('should delete a category', () => {});
 
   it('should get a category', () => {
     expect(controller).toBeDefined();
