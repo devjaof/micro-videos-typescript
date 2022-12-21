@@ -68,7 +68,9 @@ describe('CategoriesController', () => {
     expect(mockOutput).toStrictEqual(output);
   });
 
-  it('should delete a category', () => {});
+  it('should delete a category', () => {
+    expect(controller).toBeDefined();
+  });
 
   it('should get a category', () => {
     expect(controller).toBeDefined();
