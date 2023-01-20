@@ -9,8 +9,6 @@ export interface RepositoryInterface<E extends Entity> {
   delete(id: string | UniqueEntityId): Promise<void>;
 }
 
-// SeachParams tem o conceito de um objeto de valor, 
-// porém não há necessidade de mantê-lo em outro lugar se não aqui
 export type SortDirection = "asc" | "desc";
 export type SearchProps<Filter = string> = {
   page?: number;
