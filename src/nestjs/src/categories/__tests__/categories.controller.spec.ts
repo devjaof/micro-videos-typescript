@@ -34,8 +34,6 @@ describe('CategoriesController', () => {
     };
 
     const output = await controller.create(input);
-    console.log(output);
-    console.log(mockOutput);
 
     expect(mockCreateUseCase.execute).toHaveBeenCalledWith(input);
     expect(mockOutput).toStrictEqual(output);
@@ -68,8 +66,21 @@ describe('CategoriesController', () => {
     expect(mockOutput).toStrictEqual(output);
   });
 
-  it('should delete a category', () => {
-    expect(controller).toBeDefined();
+  it('should delete a category', async () => {
+    const id = '258d4d87-c57d-4ec5-81d9-6fbb9fc73929';
+    const expectedOutput = undefined;
+
+    const mockDeleteUseCase = {
+      execute: jest.fn().mockReturnValue(Promise.resolve(expectedOutput)),
+    };
+    // @ts-expect-error aqui pode
+    controller['deleteUseCase'] = mockDeleteUseCase;
+    expect(controller.remove(id)).toBeInstanceOf(Promise);
+
+    const output = await controller.remove(id);
+
+    expect(mockDeleteUseCase.execute).toHaveBeenCalledWith({ id });
+    expect(expectedOutput).toStrictEqual(output);
   });
 
   it('should get a category', () => {
