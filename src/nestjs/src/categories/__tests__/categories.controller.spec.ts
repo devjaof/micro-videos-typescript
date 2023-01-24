@@ -1,6 +1,9 @@
+import { SortDirection } from '@jfr/micro-videos/@seedwork/domain';
 import {
   CreateCategoryUseCase,
+  GetCategoryUseCase,
   UpdateCategoryUseCase,
+  ListCategoriesUseCase,
 } from '@jfr/micro-videos/category/application';
 import { CategoriesController } from '../categories.controller';
 import { CreateCategoryDto } from '../dto/create-category.dto';
@@ -83,11 +86,62 @@ describe('CategoriesController', () => {
     expect(expectedOutput).toStrictEqual(output);
   });
 
-  it('should get a category', () => {
-    expect(controller).toBeDefined();
+  it('should get a category', async () => {
+    const id = '258d4d87-c57d-4ec5-81d9-6fbb9fc73929';
+    const expectedOutput: GetCategoryUseCase.Output = {
+      id,
+      title: 'Movie',
+      description: 'aaaaaa',
+      active: true,
+      createdAt: new Date(),
+    };
+
+    const mockGetUseCase = {
+      execute: jest.fn().mockReturnValue(Promise.resolve(expectedOutput)),
+    };
+    // @ts-expect-error aqui pode
+    controller['getUseCase'] = mockGetUseCase;
+    const output = await controller.findOne(id);
+
+    expect(mockGetUseCase.execute).toHaveBeenCalledWith({ id });
+    expect(expectedOutput).toStrictEqual(output);
   });
 
-  it('should list categories', () => {
-    expect(controller).toBeDefined();
+  it('should list categories', async () => {
+    const id = '258d4d87-c57d-4ec5-81d9-6fbb9fc73929';
+    const expectedOutput: ListCategoriesUseCase.Output = {
+      items: [
+        {
+          id,
+          title: 'Movie',
+          description: 'aaaaaa',
+          active: true,
+          createdAt: new Date(),
+        },
+      ],
+      currentPage: 1,
+      lastPage: 1,
+      perPage: 1,
+      total: 1,
+    };
+
+    const mockListUseCase = {
+      execute: jest.fn().mockReturnValue(Promise.resolve(expectedOutput)),
+    };
+    // @ts-expect-error aqui pode
+    controller['listUseCase'] = mockListUseCase;
+
+    const searchParams = {
+      page: 1,
+      perPage: 2,
+      sortField: 'title',
+      sort: 'desc' as SortDirection,
+      filter: 'teste',
+    };
+
+    const output = await controller.search(searchParams);
+
+    expect(mockListUseCase.execute).toHaveBeenCalledWith(searchParams);
+    expect(expectedOutput).toStrictEqual(output);
   });
 });
